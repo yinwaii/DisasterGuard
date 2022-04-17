@@ -2,12 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:29:44
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-17 22:12:07
+ * @Last Modified time: 2022-04-17 22:49:11
  */
 
 import React from "react";
 import { TabBar } from "antd-mobile";
-import { LocationOutline } from "antd-mobile-icons"
+import { LocationOutline, MessageOutline, UserOutline } from "antd-mobile-icons"
 import { useLocation, useNavigate } from "react-router-dom";
 interface Tab {
 	key: string,
@@ -29,12 +29,12 @@ const Bottom: React.FunctionComponent = () => {
 		{
 			key: '/community',
 			title: '社区',
-			icon: <div></div>
+			icon: <MessageOutline />
 		},
 		{
 			key: '/personal',
 			title: '个人',
-			icon: <div></div>
+			icon: <UserOutline />
 		},
 	]
 	return (
