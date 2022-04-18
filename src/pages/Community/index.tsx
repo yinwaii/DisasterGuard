@@ -2,13 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:51:48
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 22:25:33
+ * @Last Modified time: 2022-04-19 00:36:51
  */
 
-import { SearchBar, List, Avatar } from "antd-mobile";
+import { SearchBar, List, Avatar, Ellipsis } from "antd-mobile";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../pages.scss"
 
 interface User {
 	name: string,
@@ -45,30 +44,26 @@ const Community: React.FunctionComponent = () => {
 	]
 	const navigate = useNavigate();
 	const enterMessage = () => {
-		navigate('/communication');
+		navigate('/common/communication');
 	}
 	return (
-		<div className="page">
-			<div className="page header">
-				<SearchBar placeholder='请输入内容' showCancelButton />
-			</div>
-			<div className="page list">
-				<List header='用户列表'>
+		<React.Fragment>
+			<SearchBar placeholder='请输入内容' style={{'--height' : '50px'}} showCancelButton />
+			<List header={null}>
 					{users.map((user: User) => (
 						<List.Item
 							key={user.name}
 							prefix={
 								<Avatar src={user.avatar}></Avatar>
 							}
-							description={user.description}
+							description={<Ellipsis direction='end' content={user.description}/>}
 							onClick={enterMessage}
 						>
 							{user.name}
 						</List.Item>
 					))}
 				</List>
-			</div>
-		</div>
+		</React.Fragment>
 	);
 }
 export default Community;

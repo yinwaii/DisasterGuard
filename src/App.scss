@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:18:13
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 19:10:44
+ * @Last Modified time: 2022-04-19 01:09:33
  */
 
 .app {
@@ -10,21 +10,37 @@
   display: flex;
   flex-direction: column;
   background: #ffffff;
+
+  .head {
+    flex: 0;
+    border-bottom: solid 1px var(--adm-border-color);
+  }
+
+  .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bottom {
+    flex: 0;
+    border-top: solid 1px var(--adm-border-color);
+  }
 }
 
-.top {
-  flex: 0;
-  border-bottom: solid 1px var(--adm-border-color);
-}
-
-.body {
-  flex: 1;
+.form {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-}
 
-.bottom {
-  flex: 0;
-  border-top: solid 1px var(--adm-border-color);
+  .left {
+    flex: 1;
+    padding: 10px;
+  }
+
+  .right {
+    flex: 0;
+    min-width: 60px;
+    margin-right: 5px;
+  }
 }

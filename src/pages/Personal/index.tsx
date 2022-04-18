@@ -2,13 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:52:09
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 22:03:35
+ * @Last Modified time: 2022-04-19 00:21:59
  */
 
 import { Avatar, List } from "antd-mobile";
 import { SystemQRcodeOutline, SetOutline } from "antd-mobile-icons";
 import React from "react";
-import "../pages.scss"
 
 interface Profile {
 	id: number,
@@ -43,16 +42,14 @@ const Personal: React.FunctionComponent = () => {
 		}
 	];
 	return (
-		<div className="page">
-			<div className="page list">
-				<List>
-					<List.Item prefix={<Avatar src={profile.avatar} />} title={<h2>{profile.agent}</h2>} description={profile.identity} extra={<SystemQRcodeOutline />}></List.Item>
-				</List>
-				<List header="通用设置">
-					{tabs.map((item: Tab) => (<List.Item prefix={item.icon}>{item.name}</List.Item>))}
-				</List>
-			</div>
-		</div>
+		<React.Fragment>
+			<List>
+				<List.Item prefix={<Avatar src={profile.avatar} />} title={<h2>{profile.agent}</h2>} description={profile.identity} extra={<SystemQRcodeOutline />}></List.Item>
+			</List>
+			<List header="通用设置">
+				{tabs.map((item: Tab, index: number) => (<List.Item prefix={item.icon} key={index}>{item.name}</List.Item>))}
+			</List>
+		</React.Fragment>
 	);
 }
 export default Personal;
