@@ -2,13 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:50:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 09:03:32
+ * @Last Modified time: 2022-04-18 09:42:42
  */
 
 import React, { useState } from "react";
 import MapFilter from "../../components/MapFilter";
 import MapView, { MapItem } from "../../components/MapView"
-import "./index.css"
+import "../pages.scss"
 
 const Discovery: React.FunctionComponent = () => {
 	const defaultItem: MapItem[] = [];

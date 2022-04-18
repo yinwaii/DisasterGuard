@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:15:54
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 09:25:56
+ * @Last Modified time: 2022-04-18 10:41:27
  */
 
 import React from 'react';
@@ -13,7 +13,7 @@ import Community from './pages/Community';
 import Personal from './pages/Personal';
 
 import Bottom from './components/Bottom'
-import './App.css';
+import './App.scss';
 function App(): JSX.Element {
 	return (
 		<Router>
