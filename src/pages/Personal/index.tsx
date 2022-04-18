@@ -2,11 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:52:09
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 00:21:59
+ * @Last Modified time: 2022-04-19 02:33:28
  */
 
 import { Avatar, List } from "antd-mobile";
-import { SystemQRcodeOutline, SetOutline } from "antd-mobile-icons";
+import { SystemQRcodeOutline, SetOutline, UserCircleOutline } from "antd-mobile-icons";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 
 interface Profile {
@@ -36,15 +37,24 @@ const Personal: React.FunctionComponent = () => {
 			path: "/"
 		},
 		{
+			icon: (<UserCircleOutline />),
+			name: "身份管理",
+			path: "/"
+		},
+		{
 			icon: (<SetOutline />),
 			name: "设置",
 			path: "/"
 		}
 	];
+	const navigate = useNavigate();
+	const enterMessage = (path: string) => (() => {
+		navigate('/common' + path);
+	});
 	return (
 		<React.Fragment>
 			<List>
-				<List.Item prefix={<Avatar src={profile.avatar} />} title={<h2>{profile.agent}</h2>} description={profile.identity} extra={<SystemQRcodeOutline />}></List.Item>
+				<List.Item prefix={<Avatar src={profile.avatar} />} title={<h2>{profile.agent}</h2>} description={profile.identity} onClick={enterMessage('/profile')}></List.Item>
 			</List>
 			<List header="通用设置">
 				{tabs.map((item: Tab, index: number) => (<List.Item prefix={item.icon} key={index}>{item.name}</List.Item>))}

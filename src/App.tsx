@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:15:54
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 02:01:26
+ * @Last Modified time: 2022-04-19 02:29:46
  */
 
 import React from 'react';
@@ -14,6 +14,7 @@ import Personal from './pages/Personal';
 import Group from './pages/Group';
 import Community from './pages/Community';
 import Organization from './pages/Organization';
+import Profile from './pages/Profile';
 
 import Bottom from './components/Bottom'
 import './App.scss';
@@ -50,6 +51,7 @@ const CommonPage: React.FunctionComponent = () => {
 					<Route path='/group' element={<Group />}></Route>
 					<Route path='/community' element={<Community />}></Route>
 					<Route path='/organization' element={<Organization />}></Route>
+					<Route path='/profile' element={<Profile />}></Route>
 				</Routes>
 			</div>
 		</div>
