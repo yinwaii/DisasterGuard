@@ -2,29 +2,30 @@
  * @Author: yinwai
  * @Date:   2022-04-18 08:37:26
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 09:24:48
+ * @Last Modified time: 2022-04-18 16:52:02
  */
 
 import React, { useState } from "react";
 import { JumboTabs } from "antd-mobile";
 import { MapItem } from "../MapView/index"
+
+export type Filter = (item: MapItem) => boolean;
 interface MapFilterProps {
-	items: MapItem[],
-	update: (items: MapItem[]) => void
+	updateFilter: (filter: (prevFilter: Filter) => Filter) => void;
+	// Dispatch<SetStateAction<Filter>>
 };
 interface Tab {
 	key: string,
 	title: string,
 	description: string
 };
-const MapFilter: React.FunctionComponent<MapFilterProps> = ({ items, update }: MapFilterProps) => {
+
+const MapFilter: React.FunctionComponent<MapFilterProps> = ({ updateFilter }: MapFilterProps) => {
 	const [typeKey, setTypeKey] = useState('supplies');
 	const updateKey = (key: string) => {
 		setTypeKey(key);
-		update(items.map((item: MapItem) => {
-			item.visible = (item.type === typeKey);
-			return item
-		}));
+		const newFilter: Filter = (item: MapItem) => (item.type === key);
+		updateFilter((prevFilter: Filter) => newFilter);
 	};
 	const tabs: Tab[] = [
 		{
@@ -33,7 +34,7 @@ const MapFilter: React.FunctionComponent<MapFilterProps> = ({ items, update }: M
 			description: '物资存放点'
 		},
 		{
-			key: 'shelters',
+			key: 'shelter',
 			title: '避难所',
 			description: '应急避难点'
 		},

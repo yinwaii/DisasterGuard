@@ -2,31 +2,34 @@
  * @Author: yinwai
  * @Date:   2022-04-18 00:07:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 09:18:13
+ * @Last Modified time: 2022-04-18 17:07:20
  */
 
-import React from "react";
-import { LngLat, Path, Map, Marker, Markers, Circle, Polygon, Polyline } from "react-amap";
+import React, { useState } from "react";
+import { Map, Marker, MarkerCluster, Circle, Polygon, Polyline } from "@pansy/react-amap";
+import { Filter } from "../MapFilter";
+import data from "../../pages/Discovery/data"
 
+type Position = [number, number];
 interface MarkerData {
-	coordinate: LngLat
+	position: Position
 };
 
 interface MarkersData {
-	coordinates: LngLat[]
-}
+	positions: {lnglat: Position, extData: number}[]
+};
 
 interface CircleData {
-	center: LngLat,
+	center: Position,
 	radius: number
 };
 
 interface PolygonData {
-	vertex: Path
+	vertex: Position[]
 };
 
 interface PathData {
-	route: Path
+	route: Position[]
 }
 
 type MapItemData = MarkerData | MarkersData | CircleData | PolygonData | PathData;
@@ -38,31 +41,32 @@ export interface MapItem {
 }
 
 interface MapViewProps {
-	items: MapItem[]
+	mapFilter: Filter
 };
 
-const MapView: React.FunctionComponent<MapViewProps> = ({ items }: MapViewProps) => {
+const MapView: React.FunctionComponent<MapViewProps> = ({ mapFilter }: MapViewProps) => {
+	const [items] = useState(data);
 	return (
-		<Map amapkey="17faa7432c71fe7a2eab0475d6f4c638">{
-			items.map((item: MapItem) => {
+		<Map mapKey="17faa7432c71fe7a2eab0475d6f4c638">{
+			items.filter(mapFilter).map((item: MapItem, index: number) => {
 				const data: MapItemData = item.data;
-				if ("coordinate" in data)
-					return (<Marker position={data.coordinate}></Marker>);
-				else if ("coordinates" in data)
-					return (<Markers></Markers>);
+				if ("position" in data)
+					return (<Marker position={data.position} key={index}></Marker>);
+				else if ("positions" in data) {
+					return (<MarkerCluster data={data.positions} key={index}></MarkerCluster>);
+				}
 				else if ("center" in data && "radius" in data)
-					return (<Circle center={data.center} radius={data.radius} bubble={false}></Circle>);
+					return (<Circle center={data.center} radius={data.radius} bubble={false} key={index}></Circle>);
 				else if ("vertex" in data)
-					return (<Polygon path={data.vertex}></Polygon>);
+					return (<Polygon path={data.vertex} key={index}></Polygon>);
 				else if ("route" in data)
-					return (<Polyline path={data.route}></Polyline>);
+					return (<Polyline path={data.route} key={index}></Polyline>);
 				else
 					return undefined;
-			}).filter((item: React.ReactNode | undefined) => {
-				return item !== undefined;
 			})
-		}</Map>
+		}
+			<Circle center={[120,30]} radius={100000000}></Circle>
+		</Map>
 	);
 }
-MapView.defaultProps = { items: [] };
 export default MapView;

@@ -2,27 +2,25 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:50:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 09:42:42
+ * @Last Modified time: 2022-04-18 17:10:49
  */
 
 import React, { useState } from "react";
-import MapFilter from "../../components/MapFilter";
+import MapFilter, { Filter } from "../../components/MapFilter";
 import MapView, { MapItem } from "../../components/MapView"
 import "../pages.scss"
 
 const Discovery: React.FunctionComponent = () => {
-	const defaultItem: MapItem[] = [];
-	const [items, setItems] = useState(defaultItem);
+	const defaultFilter: Filter = (item: MapItem) => { return false; };
+	const [filter, setFilter] = useState(() => defaultFilter);
 	return (
-		// <Map amapkey="17faa7432c71fe7a2eab0475d6f4c638"></Map>
 		<div className="page app">
 			<div className="page top">
-				<MapFilter items={items} update={setItems}></MapFilter>
+				<MapFilter updateFilter={setFilter}></MapFilter>
 			</div>
 			<div className="page body">
-				<MapView items={items}></MapView>
+				<MapView mapFilter={filter}></MapView>
 			</div>
-			{/* <Map amapkey="17faa7432c71fe7a2eab0475d6f4c638"></Map> */}
 		</div>
 	);
 }
