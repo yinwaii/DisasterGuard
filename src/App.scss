@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:18:13
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 01:09:33
+ * @Last Modified time: 2022-04-19 01:43:04
  */
 
 .app {
@@ -42,5 +42,22 @@
     flex: 0;
     min-width: 60px;
     margin-right: 5px;
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  margin: 3px;
+  // background-color: antiquewhite;
+  .left {
+    flex: 0;
+    margin-top: 7px;
+  }
+  .right {
+    flex: 1;
+    .card {
+      background-color: antiquewhite;
+    }
   }
 }

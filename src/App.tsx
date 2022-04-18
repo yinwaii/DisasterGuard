@@ -2,16 +2,18 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:15:54
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 01:05:20
+ * @Last Modified time: 2022-04-19 02:01:26
  */
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { NavBar } from 'antd-mobile';
 import Discovery from './pages/Discovery';
-import Community from './pages/Community';
-import Personal from './pages/Personal';
 import Communication from './pages/Communication';
+import Personal from './pages/Personal';
+import Group from './pages/Group';
+import Community from './pages/Community';
+import Organization from './pages/Organization';
 
 import Bottom from './components/Bottom'
 import './App.scss';
@@ -24,7 +26,7 @@ const MainPage: React.FunctionComponent = () => {
 			<div className='app body'>
 				<Routes>
 					<Route path='/discovery' element={<Discovery />}></Route>
-					<Route path='/community' element={<Community />}></Route>
+					<Route path='/communication' element={<Communication />}></Route>
 					<Route path='/personal' element={<Personal />}></Route>
 				</Routes>
 			</div>
@@ -45,14 +47,16 @@ const CommonPage: React.FunctionComponent = () => {
 			</div>
 			<div className='app body'>
 				<Routes>
-					<Route path='/communication' element={<Communication />}></Route>
+					<Route path='/group' element={<Group />}></Route>
+					<Route path='/community' element={<Community />}></Route>
+					<Route path='/organization' element={<Organization />}></Route>
 				</Routes>
 			</div>
 		</div>
 	);
 }
 
-function App(): JSX.Element {
+const App: React.FunctionComponent = () => {
 	return (
 		<Router>
 			<Routes>

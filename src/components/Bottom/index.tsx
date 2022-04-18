@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:29:44
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 22:03:02
+ * @Last Modified time: 2022-04-19 02:02:35
  */
 
 import React from "react";
@@ -27,8 +27,8 @@ const Bottom: React.FunctionComponent = () => {
 			icon: <LocationOutline />
 		},
 		{
-			key: '/community',
-			title: '社区',
+			key: '/communication',
+			title: '信息',
 			icon: <MessageOutline />
 		},
 		{
