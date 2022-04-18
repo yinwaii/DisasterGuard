@@ -2,11 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:51:48
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 19:39:51
+ * @Last Modified time: 2022-04-18 22:25:33
  */
 
 import { SearchBar, List, Avatar } from "antd-mobile";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../pages.scss"
 
 interface User {
@@ -42,6 +43,10 @@ const Community: React.FunctionComponent = () => {
 			description: 'Commodi earum exercitationem id numquam vitae',
 		},
 	]
+	const navigate = useNavigate();
+	const enterMessage = () => {
+		navigate('/communication');
+	}
 	return (
 		<div className="page">
 			<div className="page header">
@@ -56,6 +61,7 @@ const Community: React.FunctionComponent = () => {
 								<Avatar src={user.avatar}></Avatar>
 							}
 							description={user.description}
+							onClick={enterMessage}
 						>
 							{user.name}
 						</List.Item>
