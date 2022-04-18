@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-18 00:07:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 02:08:28
+ * @Last Modified time: 2022-04-18 09:18:13
  */
 
 import React from "react";
@@ -33,17 +33,18 @@ type MapItemData = MarkerData | MarkersData | CircleData | PolygonData | PathDat
 
 export interface MapItem {
 	data: MapItemData,
-	visible?: boolean
+	visible?: boolean,
+	type: string
 }
 
 interface MapViewProps {
 	items: MapItem[]
 };
 
-const MapView: React.FunctionComponent<MapViewProps> = (props: MapViewProps) => {
+const MapView: React.FunctionComponent<MapViewProps> = ({ items }: MapViewProps) => {
 	return (
 		<Map amapkey="17faa7432c71fe7a2eab0475d6f4c638">{
-			props.items.map((item: MapItem) => {
+			items.map((item: MapItem) => {
 				const data: MapItemData = item.data;
 				if ("coordinate" in data)
 					return (<Marker position={data.coordinate}></Marker>);

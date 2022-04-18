@@ -1,0 +1,26 @@
+/*
+ * @Author: yinwai
+ * @Date:   2022-04-18 08:16:43
+ * @Last Modified by:   yinwai
+ * @Last Modified time: 2022-04-18 08:28:19
+ */
+
+.page.app {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.page.top {
+  flex: 0;
+  border-bottom: solid 1px var(--adm-border-color);
+}
+
+.page.body {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

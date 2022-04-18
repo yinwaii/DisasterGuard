@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:15:54
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-17 23:29:39
+ * @Last Modified time: 2022-04-18 09:25:56
  */
 
 import React from 'react';
@@ -19,7 +19,7 @@ function App(): JSX.Element {
 		<Router>
 			<div className='app'>
 				<div className='head'>
-					<NavBar>灾难守卫者</NavBar>
+					<NavBar back={null}>灾难守卫者</NavBar>
 				</div>
 				<div className='body'>
 					<Routes>
