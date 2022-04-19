@@ -2,12 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-19 12:54:36
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 14:00:20
+ * @Last Modified time: 2022-04-19 16:58:07
  */
 
 import { Avatar, Card, List } from "antd-mobile";
 import React from "react";
-import QRStyle from "./index.module.scss"
+import QRStyle from "./QRBox.module.scss"
 
 interface User {
 	avatar: string,
@@ -24,22 +24,20 @@ const QR: React.FunctionComponent = () => {
 		qr: "github.com"
 	}
 	return (
-		<React.Fragment>
-			<div className={QRStyle.box}>
-				<div className="head">
-					<div className="left">
-						<Avatar src={user.avatar} />
-					</div>
-					<div className="right">
-						<div className="title">{user.name}</div>
-						<div className="text">{user.identity}</div>
-					</div>
+		<div className={QRStyle.root}>
+			<div className="head">
+				<div className="left">
+					<Avatar src={user.avatar} />
 				</div>
-				<div className="body">
-					sds
+				<div className="right">
+					<div className="title">{user.name}</div>
+					<div className="text">{user.identity}</div>
 				</div>
 			</div>
-		</React.Fragment>
+			<div className="body">
+				sds
+			</div>
+		</div>
 	);
 }
 export default QR;

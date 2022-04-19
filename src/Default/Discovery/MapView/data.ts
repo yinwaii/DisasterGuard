@@ -2,12 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-18 17:22:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 14:41:22
+ * @Last Modified time: 2022-04-19 14:53:30
  */
 
 
 import { MapItem } from ".";
-const data: MapItem[] = [
+
+export const data: MapItem[] = [
 	// type的取值决定可以被哪个筛选器选上，目前有shelter, supplies, healthcare, transport四种
 	// 一个点
 	{
@@ -68,4 +69,3 @@ const data: MapItem[] = [
 		"type": "transport"
 	}
 ];
-export default data;

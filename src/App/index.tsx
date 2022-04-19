@@ -2,13 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:15:54
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 14:42:35
+ * @Last Modified time: 2022-04-19 14:57:21
  */
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DefaultPage from './Default';
-import CommonPage from './Common';
+import DefaultPage from '../Default';
+import CommonPage from '../Common';
 import './App.scss';
 
 

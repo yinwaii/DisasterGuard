@@ -2,13 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-18 00:07:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 14:41:22
+ * @Last Modified time: 2022-04-19 14:53:38
  */
 
 import React, { useState } from "react";
 import { Map, Marker, MarkerCluster, Circle, Polygon, Polyline } from "@pansy/react-amap";
 import { Filter } from "../MapFilter";
-import data from "./data"
+import { data } from "./data"
 
 type Position = [number, number];
 interface MarkerData {
@@ -16,7 +16,7 @@ interface MarkerData {
 };
 
 interface MarkersData {
-	positions: {lnglat: Position, extData: number}[]
+	positions: { lnglat: Position, extData: number }[]
 };
 
 interface CircleData {
@@ -52,7 +52,7 @@ const MapView: React.FunctionComponent<MapViewProps> = ({ mapFilter }: MapViewPr
 				const data: MapItemData = item.data;
 				if ("position" in data)
 					return (<Marker position={data.position} key={index}></Marker>);
-				else if ("positions" in data) 
+				else if ("positions" in data)
 					return (<MarkerCluster data={data.positions} key={index}></MarkerCluster>);
 				else if ("center" in data && "radius" in data)
 					return (<Circle center={data.center} radius={data.radius} bubble={false} key={index}></Circle>);
