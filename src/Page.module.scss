@@ -1,0 +1,38 @@
+/*
+ * @Author: yinwai
+ * @Date:   2022-04-19 14:09:35
+ * @Last Modified by:   yinwai
+ * @Last Modified time: 2022-04-19 14:22:16
+ */
+
+.root {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: #ffffff;
+
+	:global {
+		.head {
+			flex: 0;
+			border-bottom: solid 1px var(--adm-border-color);
+		}
+
+		.body {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.box {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.bottom {
+			flex: 0;
+			border-top: solid 1px var(--adm-border-color);
+		}
+	}
+}

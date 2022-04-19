@@ -1,0 +1,36 @@
+/*
+ * @Author: yinwai
+ * @Date:   2022-04-19 13:32:26
+ * @Last Modified by:   yinwai
+ * @Last Modified time: 2022-04-19 14:12:36
+ */
+
+.box {
+	// display: flex;
+	justify-content: center;
+
+	:global {
+		.head {
+			display: flex;
+
+
+			.left {
+				flex: 0;
+			}
+
+			.right {
+				flex: 1;
+
+				.title {}
+
+				.text {}
+			}
+		}
+
+		.body {}
+	}
+}
+
+.blank {
+	flex: 0;
+}

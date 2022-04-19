@@ -2,11 +2,11 @@
  * @Author: yinwai
  * @Date:   2022-04-18 17:22:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-18 17:22:41
+ * @Last Modified time: 2022-04-19 14:41:22
  */
 
 
-import { MapItem } from "../../components/MapView";
+import { MapItem } from ".";
 const data: MapItem[] = [
 	// type的取值决定可以被哪个筛选器选上，目前有shelter, supplies, healthcare, transport四种
 	// 一个点

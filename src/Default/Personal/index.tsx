@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:52:09
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 02:33:28
+ * @Last Modified time: 2022-04-19 12:57:04
  */
 
 import { Avatar, List } from "antd-mobile";
@@ -34,7 +34,7 @@ const Personal: React.FunctionComponent = () => {
 		{
 			icon: (<SystemQRcodeOutline />),
 			name: "身份码",
-			path: "/"
+			path: "/QR"
 		},
 		{
 			icon: (<UserCircleOutline />),
@@ -57,7 +57,7 @@ const Personal: React.FunctionComponent = () => {
 				<List.Item prefix={<Avatar src={profile.avatar} />} title={<h2>{profile.agent}</h2>} description={profile.identity} onClick={enterMessage('/profile')}></List.Item>
 			</List>
 			<List header="通用设置">
-				{tabs.map((item: Tab, index: number) => (<List.Item prefix={item.icon} key={index}>{item.name}</List.Item>))}
+				{tabs.map((item: Tab, index: number) => (<List.Item prefix={item.icon} key={index} onClick={enterMessage(item.path)}>{item.name}</List.Item>))}
 			</List>
 		</React.Fragment>
 	);
