@@ -22,7 +22,7 @@ export const tabs: Tab[] = [
 			description: "sadsafasfsfs"
 		},
 		{
-			title: "身份码",
+			title: "核酸码",
 			description: (<SystemQRcodeOutline />)
 		}
 	];

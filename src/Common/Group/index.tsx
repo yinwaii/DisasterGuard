@@ -2,11 +2,11 @@
  * @Author: yinwai
  * @Date:   2022-04-18 22:06:18
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 15:36:39
+ * @Last Modified time: 2022-04-20 03:02:43
  */
 
 import React from "react";
-import { Avatar, Card, Input, Button, Form } from "antd-mobile"
+import { Avatar, Card, Input, Button } from "antd-mobile"
 import { messages } from "./data";
 import GroupStyle from './Group.module.scss';
 import FormStyle from './Form.module.scss';

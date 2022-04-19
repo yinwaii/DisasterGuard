@@ -2,12 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-19 12:54:36
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 16:58:07
+ * @Last Modified time: 2022-04-20 02:49:28
  */
 
-import { Avatar, Card, List } from "antd-mobile";
+import { Avatar } from "antd-mobile";
 import React from "react";
 import QRStyle from "./QRBox.module.scss"
+import { QRCodeSVG } from 'qrcode.react';
 
 interface User {
 	avatar: string,
@@ -35,7 +36,7 @@ const QR: React.FunctionComponent = () => {
 				</div>
 			</div>
 			<div className="body">
-				sds
+				<QRCodeSVG value={user.qr} level='H' size={256} />
 			</div>
 		</div>
 	);

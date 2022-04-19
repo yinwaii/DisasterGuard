@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 15:20:45
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 15:23:05
+ * @Last Modified time: 2022-04-20 02:57:46
  */
 
 import { Profile, Tab } from ".";
@@ -23,11 +23,11 @@ export const tabs: Tab[] = [
 	{
 		icon: (<UserCircleOutline />),
 		name: "身份管理",
-		path: "/"
+		path: "/identity"
 	},
 	{
 		icon: (<SetOutline />),
 		name: "设置",
-		path: "/"
+		path: "/setting"
 	}
 ];
