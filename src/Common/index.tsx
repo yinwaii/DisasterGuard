@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 14:29:38
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-20 15:18:58
+ * @Last Modified time: 2022-04-20 15:19:53
  */
 
 import React from "react";
@@ -16,6 +16,7 @@ import PageStyle from '../Page.module.scss';
 import QR from "./QR";
 import Setting from "./Setting";
 import Identity from "./Identity";
+import Market from "./Market";
 
 const CommonPage: React.FunctionComponent = () => {
 	const navigate = useNavigate();
@@ -29,7 +30,7 @@ const CommonPage: React.FunctionComponent = () => {
 				<Routes>
 					<Route path='/group' element={<Group />}></Route>
 					<Route path='/community' element={<Community />}></Route>
-					<Route path='/market' element={<Community />}></Route>
+					<Route path='/market' element={<Market />}></Route>
 					<Route path='/organization' element={<Organization />}></Route>
 					<Route path='/profile/*' element={<Profile />}></Route>
 					<Route path='/qr' element={<QR />}></Route>

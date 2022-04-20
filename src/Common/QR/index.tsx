@@ -2,12 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-19 12:54:36
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-20 02:49:28
+ * @Last Modified time: 2022-04-20 16:12:09
  */
 
 import { Avatar } from "antd-mobile";
 import React from "react";
-import QRStyle from "./QRBox.module.scss"
+import QRStyle from "./index.module.scss"
 import { QRCodeSVG } from 'qrcode.react';
 
 interface User {

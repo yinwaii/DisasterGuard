@@ -1,0 +1,67 @@
+/*
+ * @Author: yinwai
+ * @Date:   2022-04-19 15:27:32
+ * @Last Modified by:   yinwai
+ * @Last Modified time: 2022-04-20 16:13:48
+ */
+
+.root {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	:global {
+		.body {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.bottom {
+			flex: 0;
+			border-top: solid 1px var(--adm-border-color);
+		}
+	}
+}
+
+.form {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: white;
+
+	:global {
+		.left {
+			flex: 1;
+			padding: 10px;
+		}
+
+		.right {
+			flex: 0;
+			min-width: 60px;
+			margin-right: 5px;
+		}
+	}
+}
+
+.message {
+	display: flex;
+	flex-direction: row;
+	margin: 3px;
+
+	// background-color: antiquewhite;
+	:global {
+		.left {
+			flex: 0;
+			margin-top: 7px;
+		}
+
+		.right {
+			flex: 1;
+
+			.card {
+				background-color: antiquewhite;
+			}
+		}
+	}
+}

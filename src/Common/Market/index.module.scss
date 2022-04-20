@@ -1,0 +1,73 @@
+/*
+ * @Author: yinwai
+ * @Date:   2022-04-20 15:33:02
+ * @Last Modified by:   yinwai
+ * @Last Modified time: 2022-04-20 17:49:20
+ */
+
+.root {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	:global {
+		.head {
+			flex: 0;
+			background-color: white;
+			padding: 15px;
+
+			.title {
+				font-size: 15px;
+				margin: 5px;
+			}
+
+			.text {
+				color: grey;
+				margin-left: 5px;
+			}
+		}
+
+		.body {
+			flex: 1;
+			display: flex;
+			flex-direction: row;
+
+			.sidebar {
+				--item-border-radius: 0px;
+				--width: 20%;
+			}
+
+			.list {
+				flex: 1;
+				border-left: solid 1px #eeeeee;
+
+				.goods {
+					--border-top: 0px;
+					--border-bottom: 0px;
+					--font-size: 12px;
+
+					.preview {
+						width: 80px;
+						height: 80px;
+						padding: 10px 0 10px 0;
+					}
+
+					.title {
+						color: black;
+						margin: 5px 0 5px 0;
+					}
+
+					.description {
+						color: gray;
+						margin: 5px 0 5px 0;
+					}
+
+					.price {
+						color: red;
+						margin: 10px 0 10px 0
+					}
+				}
+			}
+		}
+	}
+}

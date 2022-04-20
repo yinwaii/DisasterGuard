@@ -2,12 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-20 02:56:56
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-20 14:57:50
+ * @Last Modified time: 2022-04-20 16:52:47
  */
 
 import React from "react";
 import { List, CheckList, Avatar, Card, Ellipsis } from 'antd-mobile';
 import { identities } from "./data";
+import Styles from './index.module.scss'
 export interface Identity {
 	name: string,
 	avatar: string,
@@ -19,7 +20,7 @@ const IdentityManager: React.FunctionComponent = () => {
 	return (
 		<React.Fragment>
 			<Card style={{ 'margin': '10px' }}>
-				<CheckList style={{ '--border-top': '0px', '--border-bottom': '0px' }}>
+				<CheckList className={Styles.checklist}>
 					{identities.map((user: Identity) => (
 						<CheckList.Item
 							key={user.name}
