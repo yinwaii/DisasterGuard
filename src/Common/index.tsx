@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 14:29:38
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-20 11:27:04
+ * @Last Modified time: 2022-04-20 15:18:58
  */
 
 import React from "react";
@@ -29,6 +29,7 @@ const CommonPage: React.FunctionComponent = () => {
 				<Routes>
 					<Route path='/group' element={<Group />}></Route>
 					<Route path='/community' element={<Community />}></Route>
+					<Route path='/market' element={<Community />}></Route>
 					<Route path='/organization' element={<Organization />}></Route>
 					<Route path='/profile/*' element={<Profile />}></Route>
 					<Route path='/qr' element={<QR />}></Route>
