@@ -15,5 +15,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+# lock
 yarn.lock
 package-lock.json
