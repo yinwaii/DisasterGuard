@@ -2,15 +2,16 @@
  * @Author: yinwai
  * @Date:   2022-04-19 12:54:36
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-20 16:12:09
+ * @Last Modified time: 2022-04-20 18:25:50
  */
 
 import { Avatar } from "antd-mobile";
 import React from "react";
-import QRStyle from "./index.module.scss"
+import QRStyle from "./index.module.scss";
 import { QRCodeSVG } from 'qrcode.react';
+import { user } from "./data";
 
-interface User {
+export interface User {
 	avatar: string,
 	name: string,
 	identity: string,
@@ -18,12 +19,6 @@ interface User {
 };
 
 const QR: React.FunctionComponent = () => {
-	const user: User = {
-		avatar: "https://images.unsplash.com/photo-1548532928-b34e3be62fc6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ",
-		name: "张三",
-		identity: "锟斤拷",
-		qr: "github.com"
-	}
 	return (
 		<div className={QRStyle.root}>
 			<div className="head">
