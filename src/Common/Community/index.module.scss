@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-21 20:18:24
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-21 21:08:50
+ * @Last Modified time: 2022-04-22 01:11:10
  */
 
 .root {
@@ -25,7 +25,7 @@
 				// padding-top: 5px;
 
 				.picture {
-					--width: 30%;
+					max-width: calc(min(30%,120px));
 					padding: 3px;
 				}
 			}
