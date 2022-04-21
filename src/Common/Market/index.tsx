@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-20 15:17:13
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-20 17:48:43
+ * @Last Modified time: 2022-04-21 21:51:45
  */
 
 import React from "react";
@@ -46,8 +46,10 @@ const Market: React.FunctionComponent = () => {
 				}</SideBar>
 				<div className="list">
 					<List className="goods">{
-						goods.map((item: Goods) => (
-							<List.Item prefix={(<Image src={item.preview} className="preview" />)}
+						goods.map((item: Goods, index: number) => (
+							<List.Item
+								key={index}
+								prefix={(<Image src={item.preview} className="preview" />)}
 								title={(<div className="title">{item.name}</div>)}
 								description={(<div className="price">{'￥'+item.price}</div>)} >
 								<div className="description">

@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 01:56:27
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-21 21:07:55
+ * @Last Modified time: 2022-04-21 21:51:15
  */
 
 import React from "react";
@@ -30,7 +30,7 @@ const Community: React.FunctionComponent = () => {
 						<div className="pictures">
 						{
 							item.pics.map((item: string, index: number) => (
-								<Image src={item} className="picture" />
+								<Image src={item} className="picture" key={index}/>
 							))
 						}
 						</div>

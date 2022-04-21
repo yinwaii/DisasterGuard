@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:51:48
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 15:20:18
+ * @Last Modified time: 2022-04-21 22:11:30
  */
 
 import { SearchBar, List, Avatar, Ellipsis } from "antd-mobile";
@@ -26,9 +26,9 @@ const Communication: React.FunctionComponent = () => {
 		<React.Fragment>
 			<SearchBar placeholder='请输入内容' style={{'--height' : '50px'}} showCancelButton />
 			<List header={null}>
-					{users.map((user: User) => (
+					{users.map((user: User, index: number) => (
 						<List.Item
-							key={user.name}
+							key={index}
 							prefix={
 								<Avatar src={user.avatar}></Avatar>
 							}
