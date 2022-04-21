@@ -8,6 +8,7 @@
 import { List, Dialog, Toast, Input, ImageUploader, AutoCenter } from "antd-mobile";
 import React from "react";
 import { tabs } from "./data";
+import Styles from './index.module.scss'
 
 export interface Tab {
 	title: string,
@@ -31,7 +32,7 @@ const Profile: React.FunctionComponent = () => {
 							content: (<AutoCenter> {
 								(item.type === 'image') ?
 									(<ImageUploader maxCount={1} upload={upload} />) :
-									(<Input placeholder={'请输入' + item.title} />)
+									(<Input placeholder={'请输入' + item.title} className={Styles.input} />)
 							} </AutoCenter>),
 							closeOnMaskClick: true
 						})
