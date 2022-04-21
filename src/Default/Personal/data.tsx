@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 15:20:45
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-20 02:57:46
+ * @Last Modified time: 2022-04-22 02:42:05
  */
 
 import { Profile, Tab } from ".";
@@ -29,5 +29,10 @@ export const tabs: Tab[] = [
 		icon: (<SetOutline />),
 		name: "设置",
 		path: "/setting"
+	},
+	{
+		icon: (<SetOutline />),
+		name: "测试自动部署",
+		path: "/identity"
 	}
 ];
