@@ -1,0 +1,43 @@
+/*
+ * @Author: yinwai
+ * @Date:   2022-04-21 20:18:24
+ * @Last Modified by:   yinwai
+ * @Last Modified time: 2022-04-21 21:08:50
+ */
+
+.root {
+	--align-items: flex-start;
+	--font-size: 12px;
+
+	:global {
+		.item {
+			.avatar {
+				padding-top: 15px;
+			}
+
+			.name {
+				font-size: 15px;
+			}
+
+			.pictures {
+				display: flex;
+				flex-wrap: wrap;
+				// padding-top: 5px;
+
+				.picture {
+					--width: 30%;
+					padding: 3px;
+				}
+			}
+
+			.content {
+				padding: 5px 12px 5px 3px;
+			}
+
+			.time {
+				padding: 3px 0 0 3px;
+			}
+
+		}
+	}
+}
