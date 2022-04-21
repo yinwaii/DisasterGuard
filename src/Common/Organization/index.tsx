@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 02:00:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-22 02:15:52
+ * @Last Modified time: 2022-04-22 02:24:58
  */
 
 import { Collapse, Steps } from "antd-mobile";
@@ -42,7 +42,7 @@ const Organization: React.FunctionComponent = () => {
 			<Collapse accordion>{
 				plans.map((item: Plans, index: number) => (
 					<Collapse.Panel key={index.toString()} title={item.title}>
-						<Steps>{
+						<Steps direction="vertical">{
 							item.content.map((item: Plan, index: number) => (
 								<Step title={item.title} status={item.status} description={item.description} key={index} />
 							))
