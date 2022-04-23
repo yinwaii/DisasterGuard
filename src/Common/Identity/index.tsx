@@ -2,12 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-20 02:56:56
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-20 16:52:47
+ * @Last Modified time: 2022-04-23 19:37:28
  */
 
 import React from "react";
 import { List, CheckList, Avatar, Card, Ellipsis } from 'antd-mobile';
-import { identities } from "./data";
+// import { identities } from "./data";
+import useAxios from "axios-hooks";
 import Styles from './index.module.scss'
 export interface Identity {
 	name: string,
@@ -17,6 +18,10 @@ export interface Identity {
 };
 
 const IdentityManager: React.FunctionComponent = () => {
+	const [{ data, loading, error }] = useAxios('/user/getIdentity');
+	if (loading) return <div>加载中</div>;
+	if (error) return <div>失败</div>;
+	const { identities }: { identities: Identity[] } = data;
 	return (
 		<React.Fragment>
 			<Card style={{ 'margin': '10px' }}>
@@ -36,8 +41,8 @@ const IdentityManager: React.FunctionComponent = () => {
 				</CheckList>
 			</Card>
 			<List header="身份管理">
-				<List.Item onClick={()=>{}}>添加新身份</List.Item>
-				<List.Item onClick={()=>{}}>删除当前身份</List.Item>
+				<List.Item onClick={() => { }}>添加新身份</List.Item>
+				<List.Item onClick={() => { }}>删除当前身份</List.Item>
 			</List>
 		</React.Fragment>
 	)

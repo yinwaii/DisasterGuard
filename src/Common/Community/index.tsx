@@ -2,27 +2,31 @@
  * @Author: yinwai
  * @Date:   2022-04-19 01:56:27
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-22 01:08:15
+ * @Last Modified time: 2022-04-23 18:14:52
  */
 
 import React from "react";
 import { List, Avatar, Image } from "antd-mobile";
-import { posts } from "./data";
+import useAxios from "axios-hooks";
+// import { posts } from "./data";
+import { User } from "../../App/user";
 import Styles from './index.module.scss';
 
 export interface Post {
-	avatar: string,
-	name: string,
+	user: User;
 	time: string,
 	content: string,
 	pics: string[]
 };
 
 const Community: React.FunctionComponent = () => {
+	const [{ data, loading, error }] = useAxios('/community/getPosts');
+	if (loading) return <div>加载中</div>;
+	if (error) return <div>失败</div>;
 	return (
 		<List className={Styles.root}>{
-			posts.map((item: Post, index: number) => (
-				<List.Item key={index} className="item" prefix={<Avatar src={item.avatar} className="avatar" />} title={(<div className="name">{item.name}</div>)} description={(<div className="time">{item.time}</div>)}>
+			data.posts.map((item: Post, index: number) => (
+				<List.Item key={index} className="item" prefix={<Avatar src={item.user.avatar} className="avatar" />} title={(<div className="name">{item.user.name}</div>)} description={(<div className="time">{item.time}</div>)}>
 					<div className="content">
 						{item.content}
 					</div>
