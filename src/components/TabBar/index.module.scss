@@ -1,0 +1,15 @@
+/*
+ * @Author: yinwai
+ * @Date:   2022-04-23 20:59:57
+ * @Last Modified by:   yinwai
+ * @Last Modified time: 2022-04-23 21:00:22
+ */
+
+.root {
+	flex: 0;
+	border-top: solid 1px var(--adm-border-color);
+	background-color: white;
+	position: sticky;
+	z-index: 999999;
+	bottom: 0;
+}

@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 12:54:36
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-23 19:43:36
+ * @Last Modified time: 2022-04-23 22:35:25
  */
 
 import { Avatar } from "antd-mobile";
@@ -10,7 +10,7 @@ import React from "react";
 import QRStyle from "./index.module.scss";
 import useAxios from "axios-hooks";
 import { QRCodeSVG } from 'qrcode.react';
-import { User } from "../../App/user";
+import { User } from "../../../model/user";
 // import { user } from "./data";
 
 // export interface User {

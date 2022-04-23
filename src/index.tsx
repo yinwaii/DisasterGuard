@@ -9,12 +9,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App from './App';
+import Router from 'components/Router';
+import Axios from 'axios';
+import { configure } from 'axios-hooks';
 
+const axios = Axios.create({
+	baseURL: 'http://127.0.0.1:4523/mock/898620',
+})
+configure({ axios });
 ReactDOM.render(
 	(
 		<React.StrictMode>
-			<App />
+			<Router />
 		</React.StrictMode>
 	),
 	document.getElementById('root') as HTMLElement

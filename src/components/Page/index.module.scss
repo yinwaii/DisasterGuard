@@ -1,0 +1,27 @@
+/*
+ * @Author: yinwai
+ * @Date:   2022-04-23 21:20:37
+ * @Last Modified by:   yinwai
+ * @Last Modified time: 2022-04-23 22:10:12
+ */
+
+.root {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: #ffffff;
+}
+
+.body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	background-color: #eeeeee;
+}
+
+.box {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

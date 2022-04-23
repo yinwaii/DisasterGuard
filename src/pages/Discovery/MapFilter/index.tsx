@@ -2,12 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-18 08:37:26
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 14:55:00
+ * @Last Modified time: 2022-04-23 20:55:45
  */
 
 import React, { useState } from "react";
 import { JumboTabs } from "antd-mobile";
-import { MapItem } from "../MapView/index";
+import { MapItem } from "../../../components/MapView/index";
 import { tabs } from "./data";
 
 export type Filter = (item: MapItem) => boolean;

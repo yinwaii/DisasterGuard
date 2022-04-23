@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:51:48
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-21 22:11:30
+ * @Last Modified time: 2022-04-23 22:16:58
  */
 
 import { SearchBar, List, Avatar, Ellipsis } from "antd-mobile";
@@ -20,7 +20,7 @@ export interface User {
 const Communication: React.FunctionComponent = () => {
 	const navigate = useNavigate();
 	const enterMessage = (path: string) => (() => {
-		navigate('/common' + path);
+		navigate(path);
 	});
 	return (
 		<React.Fragment>

@@ -2,12 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-18 00:07:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 14:53:38
+ * @Last Modified time: 2022-04-23 22:31:44
  */
 
 import React, { useState } from "react";
 import { Map, Marker, MarkerCluster, Circle, Polygon, Polyline } from "@pansy/react-amap";
-import { Filter } from "../MapFilter";
+import { Filter } from "../../pages/Discovery/MapFilter";
 import { data } from "./data"
 
 type Position = [number, number];

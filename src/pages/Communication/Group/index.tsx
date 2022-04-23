@@ -2,13 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-18 22:06:18
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-23 18:16:16
+ * @Last Modified time: 2022-04-23 22:36:01
  */
 
 import React from "react";
 import { Avatar, Card, Input, Button } from "antd-mobile"
 // import { messages } from "./data";
-import { User } from "../../App/user";
+import { User } from "../../../model/user";
 import useAxios from "axios-hooks";
 import Styles from './index.module.scss';
 

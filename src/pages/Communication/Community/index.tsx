@@ -2,14 +2,14 @@
  * @Author: yinwai
  * @Date:   2022-04-19 01:56:27
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-23 18:14:52
+ * @Last Modified time: 2022-04-23 22:35:52
  */
 
 import React from "react";
 import { List, Avatar, Image } from "antd-mobile";
 import useAxios from "axios-hooks";
 // import { posts } from "./data";
-import { User } from "../../App/user";
+import { User } from "../../../model/user";
 import Styles from './index.module.scss';
 
 export interface Post {
