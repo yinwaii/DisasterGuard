@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-18 22:06:18
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 19:04:31
+ * @Last Modified time: 2022-04-24 20:15:08
  */
 
 import React from "react";
@@ -27,7 +27,7 @@ const Group: React.FunctionComponent = () => {
 		<div className={Styles.root}>
 			<div className="body">{
 				data.messages.map((item: Message, index: number) => (
-					<div className={Styles.message} key={index}>
+					<div className={index % 5 > 0 ? Styles.message : Styles.selfMessage } key={index}>
 						<div className="left">
 							<Avatar src={item.user.avatar} />
 						</div>

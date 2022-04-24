@@ -1,0 +1,30 @@
+/*
+ * @Author: yinwai
+ * @Date:   2022-04-24 21:53:06
+ * @Last Modified by:   yinwai
+ * @Last Modified time: 2022-04-25 00:16:47
+ */
+
+.root {
+	min-height: 20vh;
+	max-height: 30vh;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+
+	:global {
+		.head {
+			flex: 0;
+			font-size: large;
+			padding: 10px;
+		}
+		.body {
+			flex: 1;
+			padding: 10px;
+			overflow-y: scroll;
+		}
+		.foot {
+			height: 60px;
+		}
+	}
+}

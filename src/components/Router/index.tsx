@@ -2,14 +2,14 @@
  * @Author: yinwai
  * @Date:   2022-04-23 21:12:28
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 19:26:20
+ * @Last Modified time: 2022-04-24 23:58:47
  */
 
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import TabBar from 'components/TabBar';
 import NavBar from 'components/NavBar';
-import { Discovery } from 'pages/Discovery/path';
+import { Discovery, Details } from 'pages/Discovery/path';
 import { Group, Market, Community, Organization, Communication } from 'pages/Index/path';
 import { Identity, Profile, Setting, QR, Personal } from 'pages/Personal/path';
 import Styles from './index.module.scss';
@@ -33,7 +33,9 @@ const Router: React.FunctionComponent = () => {
 				<div className={Styles.body}>
 					<Routes>
 						<Route path='/*' element={<Navigate to={'discovery'} />} />
-						<Route path='discovery' element={<Discovery />}></Route>
+						<Route path='discovery' element={<Discovery />}>
+							<Route path='details' element={<Details/>}></Route>
+						</Route>
 						<Route path='' element={<Communication />}></Route>
 						<Route path='group' element={<Group />}></Route>
 						<Route path='market' element={<Market />}></Route>
@@ -49,7 +51,7 @@ const Router: React.FunctionComponent = () => {
 					</Routes>
 				</div>
 				<Routes>
-					<Route path='discovery' element={<TabBar />}></Route>
+					<Route path='discovery/*' element={<TabBar />}></Route>
 					<Route path='' element={<TabBar />}></Route>
 					<Route path='personal' element={<TabBar />}></Route>
 				</Routes>
