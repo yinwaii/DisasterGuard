@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:52:09
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-19 15:25:30
+ * @Last Modified time: 2022-04-23 22:49:36
  */
 
 import { Avatar, List } from "antd-mobile";
@@ -26,7 +26,7 @@ export interface Tab {
 const Personal: React.FunctionComponent = () => {
 	const navigate = useNavigate();
 	const enterMessage = (path: string) => (() => {
-		navigate('/common' + path);
+		navigate('/personal' + path);
 	});
 	return (
 		<React.Fragment>

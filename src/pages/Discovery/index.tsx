@@ -2,20 +2,36 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:50:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-23 20:55:45
+ * @Last Modified time: 2022-04-24 02:27:46
  */
 
 import React, { useState } from "react";
-import MapFilter, { Filter } from "./MapFilter";
-import MapView, { MapItem } from "../../components/MapView"
+import { JumboTabs } from "antd-mobile";
+import MapView from "components/MapView";
+import { Map } from '@pansy/react-amap';
+import { tabs } from "./data";
+
+export interface Tab {
+	key: string,
+	title: string,
+	description: string
+};
 
 const Discovery: React.FunctionComponent = () => {
-	const defaultFilter: Filter = (item: MapItem) => { return false; };
-	const [filter, setFilter] = useState(() => defaultFilter);
+	const [typeKey, setTypeKey] = useState('supplies');
+	const updateKey = (key: string) => {
+		setTypeKey(key);
+	};
 	return (
 		<React.Fragment>
-			<MapFilter updateFilter={setFilter}></MapFilter>
-			<MapView mapFilter={filter}></MapView>
+			<JumboTabs activeKey={typeKey} onChange={updateKey}>
+				{tabs.map(item => {
+					return <JumboTabs.Tab key={item.key} title={item.title} description={item.description}></JumboTabs.Tab>
+				})}
+			</JumboTabs>
+			<Map mapKey="17faa7432c71fe7a2eab0475d6f4c638">
+				<MapView type={typeKey} />
+			</Map>
 		</React.Fragment>
 	);
 }

@@ -17,6 +17,7 @@ const axios = Axios.create({
 	baseURL: 'http://127.0.0.1:4523/mock/898620',
 })
 configure({ axios });
+export let config = ['1'];
 ReactDOM.render(
 	(
 		<React.StrictMode>
