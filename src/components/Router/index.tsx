@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-23 21:12:28
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 23:58:47
+ * @Last Modified time: 2022-04-25 01:28:19
  */
 
 import React from 'react';
@@ -32,7 +32,7 @@ const Router: React.FunctionComponent = () => {
 				</Routes>
 				<div className={Styles.body}>
 					<Routes>
-						<Route path='/*' element={<Navigate to={'discovery'} />} />
+						{/* <Route path='/*' element={<Navigate to={'discovery'} />} /> */}
 						<Route path='discovery' element={<Discovery />}>
 							<Route path='details' element={<Details/>}></Route>
 						</Route>

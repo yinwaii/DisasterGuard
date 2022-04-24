@@ -2,16 +2,16 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:50:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 21:06:45
+ * @Last Modified time: 2022-04-25 01:12:31
  */
 
 import React, { useState } from "react";
 import { JumboTabs } from "antd-mobile";
-import { Outlet } from "react-router-dom";
-import { MapView } from "components";
-import { Map } from '@pansy/react-amap';
+import { Outlet, useNavigate } from "react-router-dom";
+import { MapView, MapManager } from "components";
 import { tabs } from "./data";
 import Styles from './index.module.scss';
+import { toUrl } from "utils/request";
 
 export interface Tab {
 	key: string,
@@ -21,8 +21,17 @@ export interface Tab {
 
 const Discovery: React.FunctionComponent = () => {
 	const [typeKey, setTypeKey] = useState('supplies');
+	const navigate = useNavigate();
+	const callback_map = () => {
+		navigate('.');
+	}
+	const callback_view = (id: number) => {
+		navigate(toUrl('details', { id: String(id) }));
+	};
 	const updateKey = (key: string) => {
 		setTypeKey(key);
+		console.log(key);
+		navigate('.');
 	};
 	return (
 		<div className={Styles.root}>
@@ -34,11 +43,9 @@ const Discovery: React.FunctionComponent = () => {
 				</JumboTabs>
 			</div>
 			<div className="body">
-				<Map mapKey="17faa7432c71fe7a2eab0475d6f4c638">
-					<MapView query={{ type: typeKey }} />
-					<MapView query={{ type: typeKey }} />
-					<MapView query={{ type: typeKey }} />
-				</Map>
+				<MapManager callback={callback_map}>
+					<MapView query={{ type: typeKey }} callback={callback_view}/>
+				</MapManager>
 			</div>
 			<div className="details">
 				<Outlet />

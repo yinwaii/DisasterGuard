@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:52:09
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 19:02:48
+ * @Last Modified time: 2022-04-25 01:29:24
  */
 
 import { Avatar, List } from "antd-mobile";
@@ -31,7 +31,7 @@ const Personal: React.FunctionComponent = () => {
 	return (
 		<React.Fragment>
 			<List>
-				<List.Item prefix={<Avatar src={profile.avatar} />} title={<h2>{profile.agent}</h2>} description={profile.identity} onClick={enterMessage('/profile')}></List.Item>
+				<List.Item prefix={<Avatar src={profile.avatar} />} title={<h2>{profile.agent}</h2>} description={profile.identity} onClick={enterMessage('profile')}></List.Item>
 			</List>
 			<List header="通用设置">
 				{tabs.map((item: Tab, index: number) => (<List.Item prefix={item.icon} key={index} onClick={enterMessage(item.path)}>{item.name}</List.Item>))}
