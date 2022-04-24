@@ -2,13 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:29:44
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-23 22:03:47
+ * @Last Modified time: 2022-04-24 11:15:45
  */
 
 import React from "react";
 import { TabBar } from "antd-mobile";
 import { LocationOutline, MessageOutline, UserOutline } from "antd-mobile-icons"
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Styles from './index.module.scss';
 
 interface Tab {
@@ -41,7 +41,6 @@ const Bottom: React.FunctionComponent = () => {
 	]
 	return (
 		<React.Fragment>
-			<Outlet/>
 			<TabBar activeKey={pathname} onChange={(key: string) => activateTab(key)} className={Styles.root}>
 				{tabs.map(item => {
 					return <TabBar.Item key={item.key} icon={item.icon} title={item.title} />;

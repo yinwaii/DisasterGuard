@@ -2,23 +2,18 @@
  * @Author: yinwai
  * @Date:   2022-04-24 01:34:46
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 02:17:23
+ * @Last Modified time: 2022-04-24 13:45:27
  */
 
 import React from "react";
-import { PolygonItem } from "model/map";
+import { PolygonItem, ViewProps } from "model/map";
 import { Polygon } from '@pansy/react-amap';
 
-interface PolygonViewProps {
-	data: PolygonItem[]
-}
-
-const PolygonView: React.FunctionComponent<PolygonViewProps> = ({ data }: PolygonViewProps) => {
-	console.log(1, data);
+const PolygonView: React.FunctionComponent<ViewProps> = ({ data }: ViewProps) => {
 	return (
 		<React.Fragment>
 			{
-				data.map((item: PolygonItem, index: number) => (
+				(data as PolygonItem[]).map((item: PolygonItem, index: number) => (
 					<Polygon path={item.vertex} key={index} />
 				))
 			}

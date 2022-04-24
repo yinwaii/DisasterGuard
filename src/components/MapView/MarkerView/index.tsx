@@ -2,23 +2,18 @@
  * @Author: yinwai
  * @Date:   2022-04-24 01:23:57
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 02:17:09
+ * @Last Modified time: 2022-04-24 13:43:28
  */
 
 import React from "react";
-import { MarkerItem } from "model/map";
+import { MarkerItem, ViewProps } from "model/map";
 import { Marker } from '@pansy/react-amap';
 
-interface MarkerViewProps {
-	data: MarkerItem[]
-}
-
-const MarkerView: React.FunctionComponent<MarkerViewProps> = ({ data }: MarkerViewProps) => {
-	console.log(1, data);
+const MarkerView: React.FunctionComponent<ViewProps> = ({ data }: ViewProps) => {
 	return (
 		<React.Fragment>
 			{
-				data.map((item: MarkerItem, index: number) => (
+				(data as MarkerItem[]).map((item: MarkerItem, index: number) => (
 					<Marker position={item.position} key={index} />
 				))
 			}

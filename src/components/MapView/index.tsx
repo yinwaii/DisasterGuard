@@ -2,50 +2,46 @@
  * @Author: yinwai
  * @Date:   2022-04-18 00:07:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 02:37:33
+ * @Last Modified time: 2022-04-24 15:18:15
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import useAxios from 'axios-hooks';
-import { MapItem, MarkerItem, CircleItem, PolygonItem, PathItem } from 'model/map';
-import MarkerView from "./MarkerView";
-import CircleView from "./CircleView";
-import PolygonView from "./PolygonView";
-import PathView from "./PathView";
-// import { data } from "./data"
+import { TypedViewProps } from 'model/map';
+import { default as MarkerView } from "./MarkerView";
+import { default as CircleView } from "./CircleView";
+import { default as PolygonView } from "./PolygonView";
+import { default as PathView } from "./PathView";
+import { toUrl, Params } from "utils/request";
 
 interface MapViewProps {
-	type: string
+	query: Params
 };
 
-interface MapViewData {
-	data: MapItem[],
-	type: 'marker' | 'circle' | 'polygon' | 'path'
-}
+const MetaView: React.FunctionComponent<TypedViewProps> = ({ data, type }: TypedViewProps) => {
+	switch (type) {
+		case 'marker':
+			return (<MarkerView data={data} />);
+		case 'circle':
+			return (<CircleView data={data} />);
+		case 'polygon':
+			return (<PolygonView data={data} />);
+		case 'path':
+			return (<PathView data={data} />);
+	}
+};
 
-const MapView: React.FunctionComponent<MapViewProps> = ({ type }: MapViewProps) => {
-	const [{ data, loading, error }, refetch] = useAxios('/map/getItems');
+export const MapView: React.FunctionComponent<MapViewProps> = ({ query }: MapViewProps) => {
+	const [{ data, loading, error }, refetch] = useAxios(toUrl('/map/getItems', query));
 	useEffect(() => {
 		const updateData = async () => {
 			await refetch();
-			console.log(data);
 		};
 		updateData();
-	}, [type, refetch]);
+		// eslint-disable-next-line
+	}, [query, refetch]);
 	if (loading) return (<div>加载中</div>);
 	if (error) return (<div>失败</div>);
-	let mapViewData: MapViewData = data.data;
-	switch (mapViewData.type) {
-		case 'marker':
-			return (<MarkerView data={mapViewData.data as MarkerItem[]} />);
-		case 'circle':
-			return (<CircleView data={mapViewData.data as CircleItem[]} />);
-		case 'polygon':
-			return (<PolygonView data={mapViewData.data as PolygonItem[]} />);
-		case 'path':
-			return (<PathView data={mapViewData.data as PathItem[]} />);
-		default:
-			return <div></div>;
-	}
-}
-export default MapView;
+	let mapView: TypedViewProps = data.data;
+	return (<MetaView type={mapView.type} data={mapView.data} />);
+};

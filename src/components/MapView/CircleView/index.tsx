@@ -2,23 +2,18 @@
  * @Author: yinwai
  * @Date:   2022-04-24 01:32:05
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 11:03:20
+ * @Last Modified time: 2022-04-24 13:43:58
  */
 
 import React from "react";
-import { CircleItem } from "model/map";
+import { CircleItem, ViewProps } from "model/map";
 import { CircleMarker } from '@pansy/react-amap';
 
-interface CircleViewProps {
-	data: CircleItem[]
-}
-
-const CircleView: React.FunctionComponent<CircleViewProps> = ({ data }: CircleViewProps) => {
-	console.log(1, data);
+const CircleView: React.FunctionComponent<ViewProps> = ({ data }: ViewProps) => {
 	return (
 		<React.Fragment>
 			{
-				data.map((item: CircleItem, index: number) => (
+				(data as CircleItem[]).map((item: CircleItem, index: number) => (
 					<CircleMarker center={item.center} radius={item.radius} key={index} />
 				))
 			}

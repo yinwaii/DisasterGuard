@@ -2,12 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:50:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 02:27:46
+ * @Last Modified time: 2022-04-24 15:01:52
  */
 
 import React, { useState } from "react";
 import { JumboTabs } from "antd-mobile";
-import MapView from "components/MapView";
+import { MapView } from "components/MapView";
 import { Map } from '@pansy/react-amap';
 import { tabs } from "./data";
 
@@ -30,7 +30,9 @@ const Discovery: React.FunctionComponent = () => {
 				})}
 			</JumboTabs>
 			<Map mapKey="17faa7432c71fe7a2eab0475d6f4c638">
-				<MapView type={typeKey} />
+				<MapView query={{ type: typeKey }} />
+				<MapView query={{ type: typeKey }} />
+				<MapView query={{ type: typeKey }} />
 			</Map>
 		</React.Fragment>
 	);
