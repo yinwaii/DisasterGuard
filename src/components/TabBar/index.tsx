@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:29:44
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 11:15:45
+ * @Last Modified time: 2022-04-24 16:03:17
  */
 
 import React from "react";
@@ -16,7 +16,7 @@ interface Tab {
 	title: string,
 	icon: React.ReactNode
 };
-const Bottom: React.FunctionComponent = () => {
+const PackedTabBar: React.FunctionComponent = () => {
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 	const activateTab = (key: string) => {
@@ -29,7 +29,7 @@ const Bottom: React.FunctionComponent = () => {
 			icon: <LocationOutline />
 		},
 		{
-			key: '/communication',
+			key: '/',
 			title: '信息',
 			icon: <MessageOutline />
 		},
@@ -49,4 +49,4 @@ const Bottom: React.FunctionComponent = () => {
 		</React.Fragment>
 	);
 }
-export default Bottom;
+export default PackedTabBar;

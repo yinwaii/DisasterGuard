@@ -2,13 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-19 02:00:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-23 19:37:45
+ * @Last Modified time: 2022-04-24 19:06:06
  */
 
 import { Collapse, Steps } from "antd-mobile";
 import React from "react";
-// import { notices, plans } from "./data";
 import useAxios from "axios-hooks";
+import { Loading, ErrorBlock } from 'components';
 import Styles from './index.module.scss';
 
 export interface Plan {
@@ -30,8 +30,8 @@ export interface Plans {
 const Organization: React.FunctionComponent = () => {
 	const { Step } = Steps;
 	const [{ data, loading, error }] = useAxios('/organization/getInfo');
-	if (loading) return <div>加载中</div>;
-	if (error) return <div>失败</div>;
+	if (loading) return <Loading />;
+	if (error) return <ErrorBlock />;
 	const { notices, plans }: { notices: Notice[], plans: Notice[] } = data;
 	console.log(data);
 

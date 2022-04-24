@@ -2,14 +2,15 @@
  * @Author: yinwai
  * @Date:   2022-04-19 01:56:27
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-23 22:35:52
+ * @Last Modified time: 2022-04-24 19:04:01
  */
 
 import React from "react";
 import { List, Avatar, Image } from "antd-mobile";
 import useAxios from "axios-hooks";
 // import { posts } from "./data";
-import { User } from "../../../model/user";
+import { User } from "model/user";
+import { Loading, ErrorBlock } from 'components';
 import Styles from './index.module.scss';
 
 export interface Post {
@@ -21,8 +22,8 @@ export interface Post {
 
 const Community: React.FunctionComponent = () => {
 	const [{ data, loading, error }] = useAxios('/community/getPosts');
-	if (loading) return <div>加载中</div>;
-	if (error) return <div>失败</div>;
+	if (loading) return <Loading />;
+	if (error) return <ErrorBlock />;
 	return (
 		<List className={Styles.root}>{
 			data.posts.map((item: Post, index: number) => (
@@ -32,11 +33,11 @@ const Community: React.FunctionComponent = () => {
 					</div>
 					{(item.pics.length === 0) ? null : (
 						<div className="pictures">
-						{
-							item.pics.map((item: string, index: number) => (
-								<Image src={item} className="picture" key={index}/>
-							))
-						}
+							{
+								item.pics.map((item: string, index: number) => (
+									<Image src={item} className="picture" key={index} />
+								))
+							}
 						</div>
 					)}
 				</List.Item>

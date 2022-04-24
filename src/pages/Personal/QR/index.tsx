@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 12:54:36
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-23 22:35:25
+ * @Last Modified time: 2022-04-24 19:08:28
  */
 
 import { Avatar } from "antd-mobile";
@@ -10,20 +10,14 @@ import React from "react";
 import QRStyle from "./index.module.scss";
 import useAxios from "axios-hooks";
 import { QRCodeSVG } from 'qrcode.react';
-import { User } from "../../../model/user";
-// import { user } from "./data";
+import { Loading, ErrorBlock } from 'components';
+import { User } from "model/user";
 
-// export interface User {
-// 	avatar: string,
-// 	name: string,
-// 	identity: string,
-// 	qr: string
-// };
 
 const QR: React.FunctionComponent = () => {
 	const [{ data, loading, error }] = useAxios('/user/getInfo');
-	if (loading) return <div>加载中</div>;
-	if (error) return <div>失败</div>;
+	if (loading) return <Loading/>;
+	if (error) return <ErrorBlock/>;
 	const { user, hash }: { user: User, hash: string } = data;
 	return (
 		<div className={QRStyle.root}>

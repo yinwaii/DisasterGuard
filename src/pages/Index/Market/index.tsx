@@ -2,12 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-20 15:17:13
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-23 19:13:53
+ * @Last Modified time: 2022-04-24 19:05:03
  */
 
 import React, { useState, useEffect } from "react";
 import { List, SideBar, Image } from "antd-mobile";
 import Styles from './index.module.scss';
+import { Loading, ErrorBlock } from 'components';
 import useAxios from "axios-hooks";
 
 export interface Shop {
@@ -33,8 +34,8 @@ const GoodsView: React.FunctionComponent<GoodsProps> = ({ tab }) => {
 		const updateData = async () => { await refetch(); };
 		updateData();
 	}, [tab, refetch]);
-	if (loading) return <div>加载中</div>;
-	if (error) return <div>失败</div>;
+	if (loading) return <Loading />;
+	if (error) return <ErrorBlock />;
 	return (
 		<List className="goods">{
 			data.goods.map((item: Goods, index: number) => (

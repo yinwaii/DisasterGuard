@@ -2,12 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-20 02:56:56
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-23 19:37:28
+ * @Last Modified time: 2022-04-24 19:07:21
  */
 
 import React from "react";
 import { List, CheckList, Avatar, Card, Ellipsis } from 'antd-mobile';
-// import { identities } from "./data";
+import { Loading, ErrorBlock } from 'components';
 import useAxios from "axios-hooks";
 import Styles from './index.module.scss'
 export interface Identity {
@@ -19,8 +19,8 @@ export interface Identity {
 
 const IdentityManager: React.FunctionComponent = () => {
 	const [{ data, loading, error }] = useAxios('/user/getIdentity');
-	if (loading) return <div>加载中</div>;
-	if (error) return <div>失败</div>;
+	if (loading) return <Loading/>;
+	if (error) return <ErrorBlock/>;
 	const { identities }: { identities: Identity[] } = data;
 	return (
 		<React.Fragment>

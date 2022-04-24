@@ -1,0 +1,24 @@
+/*
+ * @Author: yinwai
+ * @Date:   2022-04-24 18:09:26
+ * @Last Modified by:   yinwai
+ * @Last Modified time: 2022-04-24 18:33:00
+ */
+
+.search-bar {
+	--height : '50px';
+}
+
+.title {
+	display: flex;
+	flex-direction: row;
+	:global {
+		.name {
+			flex: 1;
+		}
+		.icon {
+			flex: 0;
+			color: gray;
+		}
+	}
+}
