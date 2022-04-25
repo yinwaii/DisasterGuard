@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 20:05:21
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 00:12:09
+ * @Last Modified time: 2022-04-25 10:07:02
  */
 
 import useAxios from "axios-hooks";
@@ -28,7 +28,7 @@ const MetaDetails: React.FunctionComponent<DetailProps> = ({ id }: DetailProps) 
 			<div className={Styles.root}>
 				<div className="head">{title}</div>
 				<div className="body">{content}</div>
-				<div className="foot" />
+				{/* <div className="foot" /> */}
 			</div>
 		</Popup>
 	);

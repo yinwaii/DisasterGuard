@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 02:00:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 19:06:06
+ * @Last Modified time: 2022-04-25 09:52:39
  */
 
 import { Collapse, Steps } from "antd-mobile";
@@ -33,7 +33,6 @@ const Organization: React.FunctionComponent = () => {
 	if (loading) return <Loading />;
 	if (error) return <ErrorBlock />;
 	const { notices, plans }: { notices: Notice[], plans: Notice[] } = data;
-	console.log(data);
 
 	return (
 		<React.Fragment>

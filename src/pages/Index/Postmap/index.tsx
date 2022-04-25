@@ -2,17 +2,52 @@
  * @Author: yinwai
  * @Date:   2022-04-24 20:05:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 20:11:19
+ * @Last Modified time: 2022-04-25 11:27:16
  */
 
-import { FloatingPanel } from "antd-mobile";
+import { Popup,  Avatar, Image } from "antd-mobile";
+import useAxios from "axios-hooks";
 import React from "react";
+import { MapManager, MapView, Loading, ErrorBlock } from "components";
+import { Post } from "model/message";
+import Styles from './index.module.scss';
 
-const PostMap: React.FunctionComponent = () => {
-	const anchors = [100, window.innerHeight * 0.4, window.innerHeight];
+const Postmap: React.FunctionComponent = () => {
+	const [{ data, loading, error }] = useAxios('/community/getPosts');
+	if (loading) return <Loading />;
+	if (error) return <ErrorBlock />;
+	const item: Post = data.posts[0];
 	return (
-		<FloatingPanel anchors={anchors}>
-			硕大的撒
-		</FloatingPanel>
+		<div className={Styles.root}>
+			<div className="map">
+				<MapManager>
+					<MapView query={{}} />
+				</MapManager>
+			</div>
+			<Popup visible={true} mask={false} className={Styles.root}>
+				<div className='panel'>
+					<div className="avatar">
+						<Avatar src={item.user.avatar} className="avatar" />
+					</div>
+					<div className="body">
+						<div className="name">{item.user.name}</div>
+						<div className="content">
+							{item.content}
+						</div>
+						{(item.pics.length === 0) ? null : (
+							<div className="pictures">
+								{
+									item.pics.map((item: string, index: number) => (
+										<Image src={item} className="picture" key={index} />
+									))
+								}
+							</div>
+						)}
+						<div className="time">{item.time}</div>
+					</div>
+				</div>
+			</Popup>
+		</div>
 	);
 }
+export default Postmap;

@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 01:21:47
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 01:35:26
+ * @Last Modified time: 2022-04-25 09:39:39
  */
 
 export interface Position {
@@ -42,7 +42,7 @@ export interface ViewProps {
 };
 
 export type TypedViewProps = ViewProps & {
-	type: 'marker' | 'circle' | 'polygon' | 'path',
+	type: 'marker' | 'circle' | 'polygon' | 'path' | 'refresh',
 };
 
 export type QueryViewProps = {

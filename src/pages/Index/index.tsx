@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:51:48
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 19:02:08
+ * @Last Modified time: 2022-04-25 09:52:34
  */
 
 import { SearchBar, List, Avatar, Ellipsis } from "antd-mobile";
@@ -22,7 +22,6 @@ const Communication: React.FunctionComponent = () => {
 	if (loading) return <Loading />;
 	if (error) return <ErrorBlock />;
 	const contactList: Contact[] = data.contacts;
-	console.log(contactList);
 	const enterMessage = (path: string, user: User) => (() => {
 		navigate(toUrl('/' + path, { title: user.name }));
 	});

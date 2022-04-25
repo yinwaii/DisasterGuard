@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 21:29:44
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 00:05:58
+ * @Last Modified time: 2022-04-25 10:05:18
  */
 
 import React from "react";
@@ -39,14 +39,18 @@ const PackedTabBar: React.FunctionComponent = () => {
 			icon: <UserOutline />
 		},
 	]
-	return (
-		<React.Fragment>
-			<TabBar activeKey={pathname} onChange={(key: string) => activateTab(key)} className={Styles.root}>
-				{tabs.map(item => {
-					return <TabBar.Item key={item.key} icon={item.icon} title={item.title} />;
-				})}
-			</TabBar>
-		</React.Fragment>
-	);
+	for (let i in tabs) {
+		if (tabs[i].key === pathname)
+			return (
+				<React.Fragment>
+					<TabBar activeKey={pathname} onChange={(key: string) => activateTab(key)} className={Styles.root} >
+						{tabs.map(item => {
+							return <TabBar.Item key={item.key} icon={item.icon} title={item.title} />;
+						})}
+					</TabBar>
+				</React.Fragment>
+			);
+	}
+	return null;
 }
 export default PackedTabBar;

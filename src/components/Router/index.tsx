@@ -2,15 +2,15 @@
  * @Author: yinwai
  * @Date:   2022-04-23 21:12:28
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 01:28:19
+ * @Last Modified time: 2022-04-25 10:38:15
  */
 
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TabBar from 'components/TabBar';
 import NavBar from 'components/NavBar';
 import { Discovery, Details } from 'pages/Discovery/path';
-import { Group, Market, Community, Organization, Communication } from 'pages/Index/path';
+import { Group, Market, Community, Organization, Communication, Postmap } from 'pages/Index/path';
 import { Identity, Profile, Setting, QR, Personal } from 'pages/Personal/path';
 import Styles from './index.module.scss';
 
@@ -18,28 +18,19 @@ const Router: React.FunctionComponent = () => {
 	return (
 		<BrowserRouter>
 			<div className={Styles.root}>
-				<Routes>
-					<Route path='market' element={<NavBar />}></Route>
-					<Route path='community' element={<NavBar />}></Route>
-					<Route path='organization' element={<NavBar />}></Route>
-					<Route path='group' element={<NavBar />}></Route>
-					<Route path='personal'>
-						<Route path='identity' element={<NavBar />}></Route>
-						<Route path='profile' element={<NavBar />}></Route>
-						<Route path='setting' element={<NavBar />}></Route>
-						<Route path='qr' element={<NavBar />}></Route>
-					</Route>
-				</Routes>
+				<NavBar/>
 				<div className={Styles.body}>
 					<Routes>
-						{/* <Route path='/*' element={<Navigate to={'discovery'} />} /> */}
 						<Route path='discovery' element={<Discovery />}>
 							<Route path='details' element={<Details/>}></Route>
 						</Route>
-						<Route path='' element={<Communication />}></Route>
+						<Route index element={<Communication />}/>
 						<Route path='group' element={<Group />}></Route>
 						<Route path='market' element={<Market />}></Route>
-						<Route path='community' element={<Community />}></Route>
+						<Route path='community' >
+							<Route index element={<Community />} />
+							<Route path='postmap' element={<Postmap />} />
+						</Route>
 						<Route path='organization' element={<Organization />}></Route>
 						<Route path='personal'>
 							<Route index element={<Personal />}></Route>
@@ -50,11 +41,7 @@ const Router: React.FunctionComponent = () => {
 						</Route>
 					</Routes>
 				</div>
-				<Routes>
-					<Route path='discovery/*' element={<TabBar />}></Route>
-					<Route path='' element={<TabBar />}></Route>
-					<Route path='personal' element={<TabBar />}></Route>
-				</Routes>
+				<TabBar />
 			</div>
 		</BrowserRouter>
 	);

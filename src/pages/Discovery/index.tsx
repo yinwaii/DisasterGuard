@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:50:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 01:12:31
+ * @Last Modified time: 2022-04-25 09:54:45
  */
 
 import React, { useState } from "react";
@@ -28,9 +28,9 @@ const Discovery: React.FunctionComponent = () => {
 	const callback_view = (id: number) => {
 		navigate(toUrl('details', { id: String(id) }));
 	};
-	const updateKey = (key: string) => {
-		setTypeKey(key);
-		console.log(key);
+	const updateKey = async (key: string) => {
+		await setTypeKey('refresh');
+		await setTypeKey(key);
 		navigate('.');
 	};
 	return (
