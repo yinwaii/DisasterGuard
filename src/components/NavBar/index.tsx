@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 15:56:41
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 09:52:29
+ * @Last Modified time: 2022-05-08 15:18:52
  */
 
 import React from "react";
@@ -11,19 +11,24 @@ import { RedoOutline, MoreOutline } from 'antd-mobile-icons';
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Styles from './index.module.scss';
 
-const PackedNavBar: React.FunctionComponent = () => {
+interface NavBarProps {
+	actionCallback: () => void
+}
+
+const PackedNavBar: React.FunctionComponent<NavBarProps> = ({actionCallback}) => {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
 	const onBack = () => { navigate(-1) };
 	const onRefresh = () => { window.location.reload() };
 	const right = (
-		<div style={{ fontSize: 24 }}>
-			<Space style={{ '--gap': '16px' }}>
+		<div className={Styles.right}>
+			<Space className="space">
 				<RedoOutline onClick={onRefresh}/>
-				<MoreOutline id="more"/>
+				<MoreOutline onClick={actionCallback}/>
 			</Space>
 		</div>
 	)
+	console.log(actionCallback);
 	return (
 		<NavBar onBack={onBack} className={Styles.root} right={right}>{searchParams.has('title') ? searchParams.get('title') : 'Disaster Guard'}</NavBar>
 	);

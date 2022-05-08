@@ -2,11 +2,11 @@
  * @Author: yinwai
  * @Date:   2022-04-25 10:52:20
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 11:26:37
+ * @Last Modified time: 2022-05-01 23:49:19
  */
 
 .root {
-	
+
 
 	:global {
 		.map {
@@ -19,28 +19,34 @@
 			display: flex;
 			flex-direction: row;
 			padding: 15px 5px 10px 10px;
+
 			.avatar {
 				flex: 0;
 				padding: 3px;
 				// padding-top: 15px;
 			}
+
 			.body {
-				flex:1;
+				flex: 1;
 				display: flex;
 				flex-direction: column;
+
 				.name {
-					flex:0;
+					flex: 0;
 					font-size: 15px;
 					padding: 3px;
 				}
+
 				.content {
-					flex:1;
+					flex: 1;
 					padding: 5px 12px 5px 3px;
 				}
+
 				.pictures {
-					flex:1;
+					flex: 1;
 					display: flex;
 					flex-wrap: wrap;
+
 					.picture {
 						max-width: calc(min(30%, 120px));
 						max-height: 120px;
@@ -48,6 +54,7 @@
 						padding: 3px;
 					}
 				}
+
 				.time {
 					padding: 3px 0 0 3px;
 				}

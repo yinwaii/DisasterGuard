@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 12:54:36
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 19:08:28
+ * @Last Modified time: 2022-05-05 14:29:49
  */
 
 import { Avatar } from "antd-mobile";
@@ -15,7 +15,7 @@ import { User } from "model/user";
 
 
 const QR: React.FunctionComponent = () => {
-	const [{ data, loading, error }] = useAxios('/user/getInfo');
+	const [{ data, loading, error }] = useAxios('/user/userInfo');
 	if (loading) return <Loading/>;
 	if (error) return <ErrorBlock/>;
 	const { user, hash }: { user: User, hash: string } = data;

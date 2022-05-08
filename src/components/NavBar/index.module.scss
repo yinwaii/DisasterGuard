@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 16:11:54
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 16:13:05
+ * @Last Modified time: 2022-05-06 00:31:45
  */
 
 .root {
@@ -12,4 +12,14 @@
 	position: sticky;
 	z-index: 999999;
 	top: 0;
+}
+
+.right {
+	font-size: 24;
+
+	:global {
+		.space {
+			--gap: 16px;
+		}
+	}
 }
