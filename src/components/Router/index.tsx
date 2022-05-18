@@ -2,21 +2,20 @@
  * @Author: yinwai
  * @Date:   2022-04-23 21:12:28
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-08 15:54:42
+ * @Last Modified time: 2022-05-19 01:01:03
  */
 
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TabBar from 'components/TabBar';
 import NavBar from 'components/NavBar';
-import { Discovery, Details } from 'pages/Discovery/path';
+import { Discovery } from 'pages/Discovery/path';
 import { Group, Market, Community, Organization, Communication, Postmap } from 'pages/Index/path';
 import { Identity, Profile, Setting, QR, Personal } from 'pages/Personal/path';
 import Styles from './index.module.scss';
-import { useActionCenter, ActionContext, ActionContextProps, Action } from 'components/ActionCenter';
+import { useActionCenter, ActionContext, ActionContextProps } from 'components/ActionCenter';
 
 const Router: React.FunctionComponent = () => {
-	// const [actions, setActions] = useState<Action[]>();
 	const contextValue: ActionContextProps = useActionCenter();
 	return (
 		<BrowserRouter>
@@ -25,9 +24,7 @@ const Router: React.FunctionComponent = () => {
 				<div className={Styles.body}>
 					<ActionContext.Provider value={contextValue}>
 						<Routes>
-							<Route path='discovery' element={<Discovery />}>
-								<Route path='details' element={<Details />}></Route>
-							</Route>
+							<Route path='discovery' element={<Discovery />}></Route>
 							<Route index element={<Communication />} />
 							<Route path='group' element={<Group />}></Route>
 							<Route path='market' element={<Market />}></Route>

@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 21:53:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 00:38:36
+ * @Last Modified time: 2022-05-18 16:50:18
  */
 
 .root {
@@ -24,7 +24,14 @@
 			overflow-y: scroll;
 		}
 		.foot {
-			height: 70px;
+			height: 50px;
+			display: flex;
+			flex-direction: row;
+			.button {
+				flex: 1;
+				padding: 10px;
+				margin: 0 5px 0 5px;
+			}
 		}
 	}
 }

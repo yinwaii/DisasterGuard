@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 15:56:41
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-08 15:18:52
+ * @Last Modified time: 2022-05-18 23:55:54
  */
 
 import React from "react";
@@ -28,7 +28,7 @@ const PackedNavBar: React.FunctionComponent<NavBarProps> = ({actionCallback}) =>
 			</Space>
 		</div>
 	)
-	console.log(actionCallback);
+	// console.log(actionCallback);
 	return (
 		<NavBar onBack={onBack} className={Styles.root} right={right}>{searchParams.has('title') ? searchParams.get('title') : 'Disaster Guard'}</NavBar>
 	);

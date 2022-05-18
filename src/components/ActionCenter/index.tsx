@@ -2,12 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-05-05 15:12:41
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-08 15:45:44
+ * @Last Modified time: 2022-05-19 01:02:58
  */
 
 import { ActionSheet } from "antd-mobile";
 import { Action } from "antd-mobile/es/components/action-sheet";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Styles from './index.module.scss';
 
 export interface ActionContextProps {
@@ -26,7 +26,15 @@ export const ActionContext: React.Context<ActionContextProps> = React.createCont
 export const useActionCenter = () => {
 	const [visible, setVisible] = useState(false);
 	const [actions, setActions] = useState<Action[]>([]);
-	const sheet: React.ReactNode = (<ActionSheet visible={visible} actions={actions} onClose={() => setVisible(false)} style={{}}/>);
+	const sheet: React.ReactNode = (<ActionSheet visible={visible} actions={actions} onClose={()=>setVisible(false)} style={{}} closeOnMaskClick={true} closeOnAction={true}/>);
 	return {sheet, setVisible, setActions};
 };
+
+export const useActions = (actions: Action[]) => {
+	const actionContext = useContext(ActionContext);
+	useEffect(() => {
+		actionContext.setActions(actions)
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[]);
+}
 export {type Action};

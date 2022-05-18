@@ -2,53 +2,69 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:50:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-08 15:35:47
+ * @Last Modified time: 2022-05-19 01:32:50
  */
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { JumboTabs } from "antd-mobile";
-import { Outlet, useNavigate } from "react-router-dom";
-import { MapView, MapManager, ActionContext, ActionContextProps, Action } from "components";
+import { MapView, MapManager, Action, useMapAdder } from "components";
 import { tabs } from "./data";
 import Styles from './index.module.scss';
-import { toUrl } from "utils/request";
+import Details from './Details';
+import { useActions } from "components/ActionCenter";
 
 export interface Tab {
 	key: string,
 	title: string,
+	type: string,
 	description: string
 };
 
 const Discovery: React.FunctionComponent = () => {
-	const actionContext: ActionContextProps = useContext(ActionContext);
+	const callback_map = async () => {
+		await setModify(false);
+		await setDetails(false);
+	}
+	const callback_view = async (id: number) => {
+		const key = typeKey;
+		await setModify(false);
+		await setTypeKey('refresh');
+		await setTypeKey(key);
+		await setDetails(true);
+		await setCurId(id);
+	};
+	const updateKey = async (key: string) => {
+		await setTypeKey('refresh');
+		await setTypeKey(key);
+		await setDetails(false);
+	};
+	const onModify = async () => {
+		await setModify(!modify);
+		const key = typeKey;
+		await setTypeKey('refresh');
+		await setTypeKey(key);
+	};
+	const onAdd = () => {
+		if (mouseTool)
+			mouseTool.polygon();
+	}
 	const actions: Action[] = [
 		{
-			text: "时擦",
-			key: "sdad"
+			text: "增加新图形",
+			key: "sdad",
+			onClick: onAdd
 		},
 		{
 			text: "萨迪克几哈",
 			key: "sdd"
 		}
 	];
+	useActions(actions);
 	const [typeKey, setTypeKey] = useState('supplies');
-	const navigate = useNavigate();
-	// console.log(actionContext(()=>{console.log("dasda")}));
-	useEffect(() => {
-		actionContext.setActions(actions)
-	}, []);
-	// setActions(actions);
-	const callback_map = () => {
-		navigate('.');
-	}
-	const callback_view = (id: number) => {
-		navigate(toUrl('details', { id: String(id) }));
-	};
-	const updateKey = async (key: string) => {
-		await setTypeKey('refresh');
-		await setTypeKey(key);
-		navigate('.');
-	};
+	const [curId, setCurId] = useState(0);
+	const [details, setDetails] = useState(false);
+	const [modify, setModify] = useState(false);
+	const [MouseTool, mouseTool] = useMapAdder();
 	return (
 		<div className={Styles.root}>
 			<div className="head">
@@ -60,11 +76,12 @@ const Discovery: React.FunctionComponent = () => {
 			</div>
 			<div className="body">
 				<MapManager callback={callback_map}>
-					<MapView query={{ type: typeKey }} callback={callback_view}/>
+					<MapView query={{ type: typeKey }} callback={callback_view} curId={curId} modify={modify} />
+					{MouseTool}
 				</MapManager>
 			</div>
 			<div className="details">
-				<Outlet />
+				<Details id={curId} visible={details} modify={modify} onModify={onModify} />
 			</div>
 		</div>
 	);

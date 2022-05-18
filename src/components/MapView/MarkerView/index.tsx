@@ -2,19 +2,19 @@
  * @Author: yinwai
  * @Date:   2022-04-24 01:23:57
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 01:35:58
+ * @Last Modified time: 2022-05-19 00:29:13
  */
 
 import React from "react";
 import { MarkerItem, ViewProps } from "model/map";
 import { Marker } from '@pansy/react-amap';
 
-const MarkerView: React.FunctionComponent<ViewProps> = ({ data, callback, visible }: ViewProps) => {
+const MarkerView: React.FunctionComponent<ViewProps> = ({ data, callback, visible, modify, curId }: ViewProps) => {
 	return (
 		<React.Fragment>
 			{
 				(data as MarkerItem[]).map((item: MarkerItem, index: number) => (
-					<Marker position={item.position} extData={item.weight} key={index} events={callback(item.id)} visible={visible} />
+					<Marker position={item.position} extData={item.weight} key={index} events={callback(item.id)} visible={visible} draggable={modify === true && item.id === curId} />
 				))
 			}
 		</React.Fragment>

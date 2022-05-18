@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 01:21:47
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 09:39:39
+ * @Last Modified time: 2022-05-19 00:24:10
  */
 
 export interface Position {
@@ -38,7 +38,9 @@ export type MapItem = MarkerItem | CircleItem | PolygonItem | PathItem;
 export interface ViewProps {
 	data: MapItem[],
 	callback: (id: number) => { click: () => void },
-	visible?: boolean
+	visible: boolean,
+	curId?: number,
+	modify?: boolean
 };
 
 export type TypedViewProps = ViewProps & {

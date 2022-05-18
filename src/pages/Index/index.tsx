@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:51:48
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 09:52:34
+ * @Last Modified time: 2022-05-19 01:38:24
  */
 
 import { SearchBar, List, Avatar, Ellipsis } from "antd-mobile";
@@ -10,7 +10,7 @@ import { AppOutline, TeamOutline, ShopbagOutline, MailOpenOutline } from 'antd-m
 import React from "react";
 import useAxios from "axios-hooks";
 import { useNavigate } from "react-router-dom";
-import { Loading, ErrorBlock } from "components";
+import { Loading, ErrorBlock, Action, useActions } from "components";
 import { Contact, User } from "model/user";
 import { toUrl } from "utils/request";
 import Styles from './index.module.scss';
@@ -19,6 +19,14 @@ const Communication: React.FunctionComponent = () => {
 
 	const navigate = useNavigate();
 	const [{ data, loading, error }] = useAxios('/communication/getContacts');
+	const actions: Action[] = [
+		{
+			key: 'new',
+			text: '加入新组织',
+			onClick: () => { console.log('yes') }
+		}
+	];
+	useActions(actions);
 	if (loading) return <Loading />;
 	if (error) return <ErrorBlock />;
 	const contactList: Contact[] = data.contacts;
