@@ -2,14 +2,13 @@
  * @Author: yinwai
  * @Date:   2022-04-24 20:05:21
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-18 23:29:29
+ * @Last Modified time: 2022-05-19 15:22:39
  */
 
 import useAxios from "axios-hooks";
 import { Popup, Button } from "antd-mobile";
 import { Detail } from "model/map";
 import React from "react";
-import { useSearchParams } from "react-router-dom";
 import { Loading, ErrorBlock } from 'components';
 import { toUrl } from "utils/request";
 import Styles from './index.module.scss';

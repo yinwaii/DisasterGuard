@@ -2,16 +2,17 @@
  * @Author: yinwai
  * @Date:   2022-04-23 21:12:28
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-19 01:01:03
+ * @Last Modified time: 2022-05-19 15:22:14
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TabBar from 'components/TabBar';
 import NavBar from 'components/NavBar';
 import { Discovery } from 'pages/Discovery/path';
 import { Group, Market, Community, Organization, Communication, Postmap } from 'pages/Index/path';
 import { Identity, Profile, Setting, QR, Personal } from 'pages/Personal/path';
+import { SignIn, LogIn } from 'pages/Login/path';
 import Styles from './index.module.scss';
 import { useActionCenter, ActionContext, ActionContextProps } from 'components/ActionCenter';
 
@@ -39,6 +40,10 @@ const Router: React.FunctionComponent = () => {
 								<Route path='profile' element={<Profile />}></Route>
 								<Route path='setting' element={<Setting />}></Route>
 								<Route path='qr' element={<QR />}></Route>
+							</Route>
+							<Route path='login'>
+								<Route index element={<LogIn />} />
+								<Route path='signin' element={<SignIn />} />
 							</Route>
 						</Routes>
 					</ActionContext.Provider>

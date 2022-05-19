@@ -2,13 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-05-05 15:12:41
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-19 01:02:58
+ * @Last Modified time: 2022-05-19 15:21:47
  */
 
 import { ActionSheet } from "antd-mobile";
 import { Action } from "antd-mobile/es/components/action-sheet";
 import React, { useContext, useEffect, useState } from "react";
-import Styles from './index.module.scss';
 
 export interface ActionContextProps {
 	sheet?: React.ReactNode,

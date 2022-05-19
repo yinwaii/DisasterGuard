@@ -2,11 +2,11 @@
  * @Author: yinwai
  * @Date:   2022-04-24 01:36:48
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-19 00:39:27
+ * @Last Modified time: 2022-05-19 15:21:58
  */
 
 import React from "react";
-import { PathItem, MarkerItem, ViewProps, Position } from "model/map";
+import { PathItem, ViewProps, Position } from "model/map";
 import { Marker, PolyEditor, Polyline } from '@pansy/react-amap';
 
 const PathView: React.FunctionComponent<ViewProps> = ({ data, callback, visible, modify, curId }: ViewProps) => {
