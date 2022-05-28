@@ -1,8 +1,8 @@
 /*
  * @Author: yinwai
- * @Date:   2022-05-19 15:21:22
+ * @Date:   2022-05-19 13:57:29
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-19 15:21:31
+ * @Last Modified time: 2022-05-19 15:34:21
  */
 
 .root {
@@ -13,33 +13,6 @@
 	align-items: center;
 
 	:global {
-		.head {
-			flex: 0;
-			display: flex;
-			flex-direction: row;
-			padding: 20px 20px 10px 20px;
-			border-width: 1px;
-			background-color: white;
-			border-radius: 10px 10px 0 0;
-
-			.left {
-				flex: 0;
-				padding: 5px;
-			}
-
-			.right {
-				flex: 1;
-				padding: 5px;
-
-				.title {
-					font-size: 15px;
-				}
-
-				.text {
-					color: grey;
-				}
-			}
-		}
 
 		.body {
 			flex: 0;
@@ -47,6 +20,20 @@
 			padding: 10px 10px 10px 10px;
 			border-radius: 10px 10px 10px 10px;
 			background-color: white;
+
+			.adm-form-footer {
+				padding: 0 !important;
+			}
+
+			.foot {
+				display: flex;
+				flex-direction: row;
+
+				.submit {
+					flex: 1;
+					margin: 10px;
+				}
+			}
 		}
 	}
 }

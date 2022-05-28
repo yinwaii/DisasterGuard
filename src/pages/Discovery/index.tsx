@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:50:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-19 01:32:50
+ * @Last Modified time: 2022-05-28 17:54:20
  */
 
 import React, { useState } from "react";
@@ -76,7 +76,7 @@ const Discovery: React.FunctionComponent = () => {
 			</div>
 			<div className="body">
 				<MapManager callback={callback_map}>
-					<MapView query={{ type: typeKey }} callback={callback_view} curId={curId} modify={modify} />
+					<MapView query={{ type: typeKey, lng_min: '121.3', lng_max: '121.6', lat_min: '30.8', lat_max: '31.5' }} callback={callback_view} curId={curId} modify={modify} />
 					{MouseTool}
 				</MapManager>
 			</div>

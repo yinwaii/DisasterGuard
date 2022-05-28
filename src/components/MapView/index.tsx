@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-18 00:07:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-19 00:25:00
+ * @Last Modified time: 2022-05-28 18:00:49
  */
 
 import React from "react";
@@ -33,9 +33,12 @@ const MapView: React.FunctionComponent<MapViewProps> = ({ query, callback, curId
 	const [{ data, loading, error }] = useAxios(query ? toUrl('/map/getItems', query) : '/map/getItems');
 	if (loading) return (<Loading />);
 	if (error) return (<ErrorBlock />);
-	let mapView: TypedViewProps = data.data;
-	const subCallback = (id: number) => ({ 'click': () => { if (callback) callback(id); } });
-	return (<MetaView type={mapView.type} data={mapView.data} callback={subCallback} modify={modify} curId={curId} visible={true}/>);
+	console.log(query ? toUrl('/map/getItems', query) : '/map/getItems');
+	console.log(data);
+	return <div>{JSON.stringify(data)}</div>;
+	// let mapView: TypedViewProps = data.data;
+	// const subCallback = (id: number) => ({ 'click': () => { if (callback) callback(id); } });
+	// return (<MetaView type={mapView.type} data={mapView.data} callback={subCallback} modify={modify} curId={curId} visible={true}/>);
 };
 
 export default MapView;

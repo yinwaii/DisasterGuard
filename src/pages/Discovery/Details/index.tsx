@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 20:05:21
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-19 15:22:39
+ * @Last Modified time: 2022-05-28 17:59:25
  */
 
 import useAxios from "axios-hooks";
@@ -24,12 +24,13 @@ const Details: React.FunctionComponent<DetailProps> = ({ id, modify, visible, on
 	const [{ data, loading, error }] = useAxios(toUrl('/map/getDetails', { id: String(id) }));
 	if (loading) return <Loading />;
 	if (error) return <ErrorBlock />;
-	const { title, content }: Detail = data.data;
+	// const { title, content }: Detail = data.data;
 	return (
 		<Popup visible={visible} mask={false} style={{ '--z-index': '999' }}>
 			<div className={Styles.root}>
-				<div className="head">{title}</div>
-				<div className="body">{content}</div>
+				<div>{JSON.stringify(data)}</div>
+				{/* <div className="head">{title}</div>
+				<div className="body">{content}</div> */}
 				<div className="foot">
 					<Button className="button" onClick={onModify}>{modify ? '确定' : '编辑'}</Button>
 					<Button className="button">添加</Button>
