@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-23 21:12:28
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-19 15:22:14
+ * @Last Modified time: 2022-05-30 05:01:38
  */
 
 import React from 'react';
@@ -10,7 +10,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TabBar from 'components/TabBar';
 import NavBar from 'components/NavBar';
 import { Discovery } from 'pages/Discovery/path';
-import { Group, Market, Community, Organization, Communication, Postmap } from 'pages/Index/path';
+import { Group, Market, Community, Organization, Communication, Postmap, Member } from 'pages/Index/path';
 import { Identity, Profile, Setting, QR, Personal } from 'pages/Personal/path';
 import { SignIn, LogIn } from 'pages/Login/path';
 import Styles from './index.module.scss';
@@ -33,7 +33,10 @@ const Router: React.FunctionComponent = () => {
 								<Route index element={<Community />} />
 								<Route path='postmap' element={<Postmap />} />
 							</Route>
-							<Route path='organization' element={<Organization />}></Route>
+							<Route path='organization'>
+								<Route index element={<Organization />} />
+								<Route path='member' element={<Member />} />
+							</Route>
 							<Route path='personal'>
 								<Route index element={<Personal />}></Route>
 								<Route path='identity' element={<Identity />}></Route>

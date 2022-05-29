@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-05-29 21:07:27
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-30 04:48:02
+ * @Last Modified time: 2022-05-30 05:08:51
  */
 
 import React, { useState } from "react";
@@ -173,13 +173,13 @@ export const useDeleteNotice = (refetch: any) => {
 	const res: NoticeAction = [DeleteNotice, (nid: number) => (() => { setNid(nid); setVisible(true) })];
 	return res;
 };
-export const useDealApply = (gaid: any, refetch: any) => {
+export const useDealApply = (refetch: any) => {
 	const [visible, setVisible] = useState<boolean>(false);
-	const [nid, setNid] = useState<number>(0);
-	const [searchParams] = useSearchParams();
-	const getData = () => ("nid=" + nid + '&gid=' + searchParams.get('gid'));
+	const [gaid, setGaid] = useState<number>(0);
+	const [action, setAction] = useState<string>("accept");
+	const getData = () => ("gaid=" + gaid + '&action=' + action);
 	const [{ }, executePost] = useAxios({
-		url: '/group/deleteNotice',
+		url: '/group/dealGroupApply',
 		headers: { 'content-type': 'application/x-www-form-urlencoded' },
 		data: getData(),
 		method: 'POST'
@@ -188,7 +188,7 @@ export const useDealApply = (gaid: any, refetch: any) => {
 	const DealApply = (
 		<Dialog
 			visible={visible}
-			title="请确认是否要删除"
+			title="请确认是否要处理申请"
 			closeOnMaskClick closeOnAction
 			onClose={() => setVisible(false)}
 			actions={[
@@ -199,6 +199,6 @@ export const useDealApply = (gaid: any, refetch: any) => {
 				},
 			]}
 		/>)
-	const res: NoticeAction = [DealApply, (nid: number) => (() => { setNid(gaid); setVisible(true) })];
+	const res: NoticeAction = [DealApply, (params: any) => (() => { setGaid(params.gaid); setAction(params.action); setVisible(true) })];
 	return res;
 };

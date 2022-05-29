@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 02:00:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-30 04:34:42
+ * @Last Modified time: 2022-05-30 05:05:57
  */
 
 import { Collapse, Steps, Button } from "antd-mobile";
@@ -10,7 +10,7 @@ import React from "react";
 import useAxios from "axios-hooks";
 import { Loading, ErrorBlock, useIssueNotice, useGlobal } from 'components';
 import Styles from './index.module.scss';
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useActions, Action } from "components";
 import { useDeleteNotice, useUpdateNotice } from "components/GroupManager";
 
@@ -34,6 +34,7 @@ export interface Plans {
 const Organization: React.FunctionComponent = () => {
 	const { Step } = Steps;
 	const [searchParams] = useSearchParams();
+	const navigate = useNavigate();
 	const [{ data, loading, error }, refetch] = useAxios('/group/getNotice?gid=' + searchParams.get('gid'));
 	const [IssueNotice, issueNotice] = useIssueNotice(refetch);
 	const [UpdateNotice, updateNotice] = useUpdateNotice(refetch);
@@ -43,6 +44,11 @@ const Organization: React.FunctionComponent = () => {
 			key: 'apply',
 			text: '加入新组织',
 			onClick: issueNotice
+		},
+		{
+			key: 'applyManage',
+			text: '管理入群信息',
+			onClick: () => navigate('member?gid=' + searchParams.get('gid'))
 		},
 	];
 	useActions(actions);
