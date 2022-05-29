@@ -2,14 +2,14 @@
  * @Author: yinwai
  * @Date:   2022-04-24 20:05:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 11:27:16
+ * @Last Modified time: 2022-05-29 22:47:25
  */
 
 import { Popup,  Avatar, Image } from "antd-mobile";
 import useAxios from "axios-hooks";
 import React from "react";
 import { MapManager, MapView, Loading, ErrorBlock } from "components";
-import { Post } from "model/message";
+import { Post } from "model/group";
 import Styles from './index.module.scss';
 
 const Postmap: React.FunctionComponent = () => {

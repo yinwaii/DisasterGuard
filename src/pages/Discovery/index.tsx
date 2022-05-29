@@ -2,21 +2,23 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:50:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-28 17:54:20
+ * @Last Modified time: 2022-05-29 17:57:00
  */
 
 import React, { useState } from "react";
 import { JumboTabs } from "antd-mobile";
 import { MapView, MapManager, Action, useMapAdder } from "components";
-import { tabs } from "./data";
+import { tabs, typeMap } from "./data";
 import Styles from './index.module.scss';
 import Details from './Details';
 import { useActions } from "components/ActionCenter";
+import { MapItem } from "model/map";
+import useAxios from "axios-hooks";
+import { useEffect } from "react";
 
 export interface Tab {
 	key: string,
 	title: string,
-	type: string,
 	description: string
 };
 
@@ -45,8 +47,25 @@ const Discovery: React.FunctionComponent = () => {
 		await setTypeKey(key);
 	};
 	const onAdd = () => {
-		if (mouseTool)
-			mouseTool.polygon();
+		console.log(mouseTool)
+		if (mouseTool.current)
+		{
+			switch (typeMap[typeKey])
+			{
+				case 'polygon':
+					mouseTool.current.polygon();
+					break;
+				case 'path':
+					mouseTool.current.polyline();
+					break;
+				case 'marker':
+					mouseTool.current.marker();
+					break;
+				case 'circle':
+					mouseTool.current.circle();
+					break;
+			}
+		}
 	}
 	const actions: Action[] = [
 		{
@@ -59,12 +78,35 @@ const Discovery: React.FunctionComponent = () => {
 			key: "sdd"
 		}
 	];
-	useActions(actions);
+	const [result, setResult] = useState<{ data: MapItem[], type: string }>();
 	const [typeKey, setTypeKey] = useState('supplies');
 	const [curId, setCurId] = useState(0);
 	const [details, setDetails] = useState(false);
 	const [modify, setModify] = useState(false);
-	const [MouseTool, mouseTool] = useMapAdder();
+	const [MouseTool, mouseTool] = useMapAdder(setResult);
+	useActions(actions, [typeKey]);
+	const getData = () => {
+		const typeDict: { [name: string]: string } = { 'marker': 'Marker', 'polygon': 'Polygon', 'circle': 'Circle', 'path': 'Path' };
+		return {
+			data: result,
+			anonymous: false,
+			type: typeKey,
+			public: true,
+			element_type: result ? typeDict[result.type]: 'marker'
+		};
+	}
+	const [{ data }, executePost] = useAxios(
+		{
+			url: '/map/createItem',
+			headers: { 'content-type': 'application/json' },
+			data: getData(),
+			method: 'POST'
+		},
+		{ manual: true }
+	);
+	useEffect(() => { if (result) executePost() }, [result, typeKey, executePost]);
+	if (data)
+		console.log(data);
 	return (
 		<div className={Styles.root}>
 			<div className="head">

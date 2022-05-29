@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 20:05:21
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-28 17:59:25
+ * @Last Modified time: 2022-05-29 17:26:23
  */
 
 import useAxios from "axios-hooks";
@@ -29,8 +29,8 @@ const Details: React.FunctionComponent<DetailProps> = ({ id, modify, visible, on
 		<Popup visible={visible} mask={false} style={{ '--z-index': '999' }}>
 			<div className={Styles.root}>
 				<div>{JSON.stringify(data)}</div>
-				{/* <div className="head">{title}</div>
-				<div className="body">{content}</div> */}
+				{/* <div className="head">{title}</div> */}
+				{/* <div className="body">{content}</div> */}
 				<div className="foot">
 					<Button className="button" onClick={onModify}>{modify ? '确定' : '编辑'}</Button>
 					<Button className="button">添加</Button>

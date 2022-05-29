@@ -2,10 +2,12 @@
  * @Author: yinwai
  * @Date:   2022-04-19 02:13:44
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-24 19:07:48
+ * @Last Modified time: 2022-05-30 04:30:14
  */
 
 import { List, Dialog, Toast, Input, ImageUploader, AutoCenter } from "antd-mobile";
+import useAxios from "axios-hooks";
+import { ErrorBlock, Loading } from "components";
 import React from "react";
 import { tabs } from "./data";
 import Styles from './index.module.scss'
@@ -17,6 +19,9 @@ export interface Tab {
 };
 
 const Profile: React.FunctionComponent = () => {
+	const [{ data, loading, error }] = useAxios('/user/userInfo');
+	if (loading) return <Loading />;
+	if (error) return <ErrorBlock />;
 	const upload = async (file: File) => {
 		return {
 			url: URL.createObjectURL(file),

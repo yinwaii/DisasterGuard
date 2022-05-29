@@ -2,36 +2,45 @@
  * @Author: yinwai
  * @Date:   2022-04-17 22:51:48
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-19 01:38:24
+ * @Last Modified time: 2022-05-30 02:07:54
  */
 
-import { SearchBar, List, Avatar, Ellipsis } from "antd-mobile";
+import { SearchBar, List, Ellipsis } from "antd-mobile";
 import { AppOutline, TeamOutline, ShopbagOutline, MailOpenOutline } from 'antd-mobile-icons';
 import React from "react";
 import useAxios from "axios-hooks";
 import { useNavigate } from "react-router-dom";
-import { Loading, ErrorBlock, Action, useActions } from "components";
-import { Contact, User } from "model/user";
+import { Loading, ErrorBlock, Action, useActions, useApplyGroup, useCreateGroup } from "components";
+import { Group, User } from "model/user";
 import { toUrl } from "utils/request";
 import Styles from './index.module.scss';
+import { GroupAction } from "model/group";
+import Avatar from "react-avatar";
 
 const Communication: React.FunctionComponent = () => {
-
 	const navigate = useNavigate();
-	const [{ data, loading, error }] = useAxios('/communication/getContacts');
+	const [{ data, loading, error }] = useAxios('/group/getUserGroupInfo');
+	const [ApplyGroup, applyGroup]: GroupAction = useApplyGroup();
+	const [CreateGroup, createGroup] = useCreateGroup();
 	const actions: Action[] = [
 		{
-			key: 'new',
+			key: 'apply',
 			text: '加入新组织',
-			onClick: () => { console.log('yes') }
+			onClick: applyGroup
+		},
+		{
+			key: 'create',
+			text: '创建新组织',
+			onClick: createGroup
 		}
 	];
 	useActions(actions);
 	if (loading) return <Loading />;
 	if (error) return <ErrorBlock />;
-	const contactList: Contact[] = data.contacts;
-	const enterMessage = (path: string, user: User) => (() => {
-		navigate(toUrl('/' + path, { title: user.name }));
+	console.log(data);
+	const contactList: Group[] = data.data;
+	const enterMessage = (gid: number) => (() => {
+		navigate(toUrl('/organization' , { gid: gid.toString() }));
 	});
 	const getTypeIcon = (type: 'community' | 'group' | 'market' | 'organization') => {
 		switch (type) {
@@ -49,25 +58,27 @@ const Communication: React.FunctionComponent = () => {
 		<React.Fragment>
 			<SearchBar placeholder='请输入内容' className={Styles.searchBar} showCancelButton />
 			<List header={null}>
-				{contactList.map((contact: Contact, index: number) => (
+				{contactList.map((contact: Group, index: number) => (
 					<List.Item
 						key={index}
 						prefix={
-							<Avatar src={contact.user.avatar}></Avatar>
+							<Avatar name={contact.name} size="40"></Avatar>
 						}
-						description={<Ellipsis direction='end' content={contact.lastMessage} />}
-						onClick={enterMessage(contact.type, contact.user)}
+						description={<Ellipsis direction='end' content={contact.desc} />}
+						onClick={enterMessage(contact.gid)}
 					>
 						<div className={Styles.title}>
 							<div className="name">
-								{contact.user.name}
+								{contact.name}
 							</div>
-							<div className="icon">
+							{/* <div className="icon">
 								{getTypeIcon(contact.type)}
-							</div>
+							</div> */}
 						</div>
 					</List.Item>
 				))}
+				{ApplyGroup}
+				{CreateGroup}
 			</List>
 		</React.Fragment>
 	);

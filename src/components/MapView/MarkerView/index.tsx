@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 01:23:57
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-19 00:29:13
+ * @Last Modified time: 2022-05-29 17:54:49
  */
 
 import React from "react";
@@ -13,7 +13,7 @@ const MarkerView: React.FunctionComponent<ViewProps> = ({ data, callback, visibl
 	return (
 		<React.Fragment>
 			{
-				(data as MarkerItem[]).map((item: MarkerItem, index: number) => (
+				(data as any).items.map((item: MarkerItem, index: number) => (
 					<Marker position={item.position} extData={item.weight} key={index} events={callback(item.id)} visible={visible} draggable={modify === true && item.id === curId} />
 				))
 			}

@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-05-19 13:39:24
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-28 17:43:07
+ * @Last Modified time: 2022-05-29 19:52:20
  */
 
 import { Radio, Space, Form, Input, Button } from "antd-mobile";
@@ -15,23 +15,28 @@ const SignIn: React.FunctionComponent = () => {
 	const methods = [
 		{
 			name: 'nick_name',
-			label: '昵称'
+			label: '昵称',
+			type: 'text'
 		},
 		{
 			name: 'name',
 			label: '用户名',
+			type: 'text'
 		},
 		{
 			name: 'email',
 			label: '邮箱',
+			type: 'email'
 		},
 		{
 			name: 'phone',
-			label: '手机号'
+			label: '手机号',
+			type: 'tel'
 		},
 		{
 			name: 'pass',
-			label: '密码'
+			label: '密码',
+			type: 'password'
 		}
 	]
 	// const methods: { [name: string]: string } = { 'nick_name': '昵称', 'name': '用户名', 'email': '电子邮箱', 'phone': '手机号', 'pass': '密码' };
@@ -52,10 +57,9 @@ const SignIn: React.FunctionComponent = () => {
 		},
 		{ manual: true });
 	const navigate = useNavigate();
-	const onFinish = async () => {
-		console.log(generateRequest());
-		await executePost();
-		await console.log(data);
+	const onFinish = () => {
+		if (data && data.code === 0)
+			navigate('..');
 		// await navigate('/');
 	};
 	const onSignIn = () => {
@@ -64,7 +68,7 @@ const SignIn: React.FunctionComponent = () => {
 	return (
 		<div className={Styles.root}>
 			<div className="body">
-				<Form form={form} layout='horizontal' mode='card' onFinish={onFinish}
+				<Form form={form} layout='horizontal' mode='card' onFinish={executePost}
 					initialValues={{ loginMethod: 'name', pass: '', account: '' }}
 					footer={
 						<div className="foot">
@@ -78,14 +82,14 @@ const SignIn: React.FunctionComponent = () => {
 					}>
 					<Form.Header />
 					{
-						methods.map(({name, label}, index: number) => (
+						methods.map(({name, label, type}, index: number) => (
 							<Form.Item name={name} label={label} key={index}>
-								<Input placeholder="请输入"/>
+								<Input placeholder="请输入" type={type}/>
 							</Form.Item>
 						))
 					}
 				</Form>
-				{(loading ? <Loading /> : (error ? <ErrorBlock /> : <div>{JSON.stringify(data)}</div>))}
+				{(loading ? <Loading /> : (error ? <ErrorBlock /> : onFinish()))}
 			</div>
 		</div>
 	)

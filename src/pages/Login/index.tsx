@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-05-19 13:38:59
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-28 19:28:55
+ * @Last Modified time: 2022-05-30 04:06:52
  */
 
 import { Radio, Space, Form, Input, Button } from "antd-mobile";
@@ -10,7 +10,7 @@ import useAxios from "axios-hooks";
 import React from "react";
 import Styles from './index.module.scss';
 import { useNavigate } from "react-router-dom";
-import { Loading, ErrorBlock } from "components";
+import { Loading, ErrorBlock, useGlobal } from "components";
 const LogIn: React.FunctionComponent = () => {
 	const methods: { [name: string]: string } = { 'mobile': '手机号', 'email': '邮箱', 'name': '用户名' };
 	type FieldType = { pass: string, account: string, loginMethod: 'name' | 'email' | 'phone' };
@@ -19,7 +19,7 @@ const LogIn: React.FunctionComponent = () => {
 	const account: string = Form.useWatch('account', form);
 	const loginMethod: string = Form.useWatch('loginMethod', form);
 	const generateRequest = () => ('pass=' + pass + '&' + loginMethod + '=' + account);
-	const [{ data, loading, error, response }, executePost] = useAxios(
+	const [{ data, loading, error }, executePost] = useAxios(
 		{
 			url: '/user/login',
 			headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -28,9 +28,13 @@ const LogIn: React.FunctionComponent = () => {
 		},
 		{ manual: true });
 	const navigate = useNavigate();
+	const [global, setGlobal] = useGlobal();
 	const onFinish = () => {
 		if (data && data.code === 0)
+		{
+			setGlobal(data.data.uid);
 			navigate('/');
+		}
 	};
 	const onSignIn = () => {
 		navigate('signin');
@@ -66,7 +70,7 @@ const LogIn: React.FunctionComponent = () => {
 						<Input placeholder='请输入' />
 					</Form.Item>
 					<Form.Item name='pass' label='密码'>
-						<Input placeholder='请输入' />
+						<Input placeholder='请输入' type="password"/>
 					</Form.Item>
 				</Form>
 				{(loading ? <Loading /> : (error ? <ErrorBlock /> : onFinish()))}

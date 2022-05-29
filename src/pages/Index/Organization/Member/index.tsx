@@ -1,8 +1,8 @@
 /*
  * @Author: yinwai
- * @Date:   2022-04-19 02:00:06
+ * @Date:   2022-05-30 04:18:51
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-30 04:34:42
+ * @Last Modified time: 2022-05-30 04:44:58
  */
 
 import { Collapse, Steps, Button } from "antd-mobile";
@@ -14,27 +14,19 @@ import { useSearchParams } from "react-router-dom";
 import { useActions, Action } from "components";
 import { useDeleteNotice, useUpdateNotice } from "components/GroupManager";
 
-export interface Plan {
-	title: string,
-	status: "wait" | "process" | "finish" | "error" | undefined,
-	description: string,
-};
-
 export interface Notice {
-	nid: number,
-	title: string,
-	content: string | Plan[],
+	gaid: number,
+	uid: number,
+	gid: number,
+	msg: string,
+	status: string,
+	create_time: string,
+	update_time: string,
 };
 
-export interface Plans {
-	title: string,
-	content: Plan[],
-}
-
-const Organization: React.FunctionComponent = () => {
-	const { Step } = Steps;
+const Member: React.FunctionComponent = () => {
 	const [searchParams] = useSearchParams();
-	const [{ data, loading, error }, refetch] = useAxios('/group/getNotice?gid=' + searchParams.get('gid'));
+	const [{ data, loading, error }, refetch] = useAxios('/group/getGroupApplyList?gid=' + searchParams.get('gid'));
 	const [IssueNotice, issueNotice] = useIssueNotice(refetch);
 	const [UpdateNotice, updateNotice] = useUpdateNotice(refetch);
 	const [DeleteNotice, deleteNotice] = useDeleteNotice(refetch);
@@ -61,28 +53,19 @@ const Organization: React.FunctionComponent = () => {
 			{DeleteNotice}
 			<Collapse accordion>{
 				notices.map((item: Notice, index: number) =>
-					(typeof item.content === 'string') ?
-						(
-							<Collapse.Panel key={index.toString()} title={item.title}>
-								<div>
-									<div>{item.content}</div>
-									{(privilege.data.data.privilege as string) === 'owner' ? (<Button onClick={updateNotice(item.nid)}>修改</Button>) : (<></>)}
-									{(privilege.data.data.privilege as string) === 'owner' ? (<Button onClick={deleteNotice(item.nid)}>删除</Button>) : (<></>)}
-							</div>
-							</Collapse.Panel>
-			) :
-			(
-			<Collapse.Panel key={index.toString()} title={item.title}>
-				<Steps direction="vertical">{
-					item.content.map((item: Plan, index: number) => (
-						<Step title={item.title} status={item.status} description={item.description} key={index} />
-					))
-				}</Steps>
-			</Collapse.Panel>
-			)
-			)
+				(
+					<Collapse.Panel key={index.toString()} title={item.uid.toString() + '@' + item.gaid.toString()}>
+						<div>
+							<div>{item.msg}</div>
+							<div>创建时间：{item.create_time} 修改时间：{item.update_time}</div>
+							{(privilege.data.data.privilege as string) === 'owner' ? (<Button onClick={updateNotice(item.uid)}>同意</Button>) : (<></>)}
+							{(privilege.data.data.privilege as string) === 'owner' ? (<Button onClick={deleteNotice(item.uid)}>拒绝</Button>) : (<></>)}
+						</div>
+					</Collapse.Panel>
+				)
+				)
 			}</Collapse>
 		</React.Fragment >
 	);
 }
-export default Organization;
+export default Member;

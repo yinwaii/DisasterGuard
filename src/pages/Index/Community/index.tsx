@@ -2,14 +2,14 @@
  * @Author: yinwai
  * @Date:   2022-04-19 01:56:27
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-04-25 11:20:20
+ * @Last Modified time: 2022-05-29 22:47:25
  */
 
 import React from "react";
 import { List, Avatar, Image } from "antd-mobile";
 import { useNavigate } from "react-router-dom";
 import useAxios from "axios-hooks";
-import { Post } from "model/message";
+import { Post } from "model/group";
 import { Loading, ErrorBlock } from 'components';
 import Styles from './index.module.scss';
 
