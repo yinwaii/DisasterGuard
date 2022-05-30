@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-05-19 13:38:59
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-30 04:06:52
+ * @Last Modified time: 2022-05-30 17:53:10
  */
 
 import { Radio, Space, Form, Input, Button } from "antd-mobile";
@@ -12,7 +12,7 @@ import Styles from './index.module.scss';
 import { useNavigate } from "react-router-dom";
 import { Loading, ErrorBlock, useGlobal } from "components";
 const LogIn: React.FunctionComponent = () => {
-	const methods: { [name: string]: string } = { 'mobile': '手机号', 'email': '邮箱', 'name': '用户名' };
+	const methods: { [name: string]: string } = { 'phone': '手机号', 'email': '邮箱', 'name': '用户名' };
 	type FieldType = { pass: string, account: string, loginMethod: 'name' | 'email' | 'phone' };
 	const [form] = Form.useForm<FieldType>();
 	const pass: string = Form.useWatch('pass', form);
