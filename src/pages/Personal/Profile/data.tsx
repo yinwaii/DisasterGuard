@@ -20,13 +20,13 @@ export const tabs: Tab[] = [
 		description: "张三"
 	},
 	{
-		title: "ID",
+		title: "昵称",
+		type: 'text',
+		description: (<SystemQRcodeOutline />)
+	},
+	{
+		title: "个性签名",
 		type: 'text',
 		description: "sadsafasfsfs"
 	},
-	{
-		title: "核酸码",
-		type: 'image',
-		description: (<SystemQRcodeOutline />)
-	}
 ];

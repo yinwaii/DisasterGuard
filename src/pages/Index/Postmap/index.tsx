@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-24 20:05:35
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-29 22:47:25
+ * @Last Modified time: 2022-05-30 13:03:29
  */
 
 import { Popup,  Avatar, Image } from "antd-mobile";
@@ -27,7 +27,7 @@ const Postmap: React.FunctionComponent = () => {
 			<Popup visible={true} mask={false} className={Styles.root}>
 				<div className='panel'>
 					<div className="avatar">
-						<Avatar src={item.user.avatar} className="avatar" />
+						{/* <Avatar src={item.user.avatar} className="avatar" /> */}
 					</div>
 					<div className="body">
 						<div className="name">{item.user.name}</div>

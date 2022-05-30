@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 12:54:36
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-05 14:29:49
+ * @Last Modified time: 2022-05-30 13:01:49
  */
 
 import { Avatar } from "antd-mobile";
@@ -18,12 +18,12 @@ const QR: React.FunctionComponent = () => {
 	const [{ data, loading, error }] = useAxios('/user/userInfo');
 	if (loading) return <Loading/>;
 	if (error) return <ErrorBlock/>;
-	const { user, hash }: { user: User, hash: string } = data;
+	const user: User = data.data[0];
 	return (
 		<div className={QRStyle.root}>
 			<div className="head">
 				<div className="left">
-					<Avatar src={user.avatar} />
+					{/* <Avatar src={user.avatar} /> */}
 				</div>
 				<div className="right">
 					<div className="title">{user.name}</div>
@@ -31,7 +31,7 @@ const QR: React.FunctionComponent = () => {
 				</div>
 			</div>
 			<div className="body">
-				<QRCodeSVG value={hash} level='H' size={256} />
+				<QRCodeSVG value={user.uid+user.name+user.nick_name+user.desc} level='H' size={256} />
 			</div>
 		</div>
 	);

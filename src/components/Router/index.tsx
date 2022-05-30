@@ -2,11 +2,11 @@
  * @Author: yinwai
  * @Date:   2022-04-23 21:12:28
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-30 05:01:38
+ * @Last Modified time: 2022-05-30 12:57:30
  */
 
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import TabBar from 'components/TabBar';
 import NavBar from 'components/NavBar';
 import { Discovery } from 'pages/Discovery/path';
@@ -26,7 +26,7 @@ const Router: React.FunctionComponent = () => {
 					<ActionContext.Provider value={contextValue}>
 						<Routes>
 							<Route path='discovery' element={<Discovery />}></Route>
-							<Route index element={<Communication />} />
+							<Route index element={contextValue.global ? (<Communication />) : (<Navigate to='/login'/>)} />
 							<Route path='group' element={<Group />}></Route>
 							<Route path='market' element={<Market />}></Route>
 							<Route path='community' >

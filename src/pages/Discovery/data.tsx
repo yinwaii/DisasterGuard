@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 14:54:07
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-29 15:32:32
+ * @Last Modified time: 2022-05-30 13:04:30
  */
 
 import { Tab } from ".";
@@ -30,7 +30,7 @@ export const tabs: Tab[] = [
 ];
 export const typeMap: { [index: string]: string } = {
 	'supplies': 'marker',
-	'shelter': 'circle',
-	'healthcare': 'polygon',
-	'transport': 'path'
+	'shelter': 'marker',
+	'healthcare': 'marker',
+	'transport': 'marker'
 }

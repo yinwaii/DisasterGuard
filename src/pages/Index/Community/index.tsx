@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 01:56:27
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-29 22:47:25
+ * @Last Modified time: 2022-05-30 13:03:19
  */
 
 import React from "react";
@@ -24,7 +24,7 @@ const Community: React.FunctionComponent = () => {
 			data.posts.map((item: Post, index: number) => (
 				<List.Item key={index}
 					className="item"
-					prefix={<Avatar src={item.user.avatar} className="avatar" />}
+					// prefix={<Avatar src={item.user.avatar} className="avatar" />}
 					title={(<div className="name">{item.user.name}</div>)}
 					description={(<div className="time">{item.time}</div>)}
 					onClick={onClick}
