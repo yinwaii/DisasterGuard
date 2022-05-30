@@ -2,7 +2,7 @@
  * @Author: yinwai
  * @Date:   2022-04-19 02:00:06
  * @Last Modified by:   yinwai
- * @Last Modified time: 2022-05-30 05:05:57
+ * @Last Modified time: 2022-05-30 14:43:38
  */
 
 import { Collapse, Steps, Button } from "antd-mobile";
@@ -42,7 +42,7 @@ const Organization: React.FunctionComponent = () => {
 	const actions: Action[] = [
 		{
 			key: 'apply',
-			text: '加入新组织',
+			text: '推送新消息',
 			onClick: issueNotice
 		},
 		{
